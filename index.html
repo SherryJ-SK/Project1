@@ -24,11 +24,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script scr="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 
 <body>
+    <script src="assets/javascript/moment.min.js">
+    </script>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">My Events</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -61,8 +63,8 @@
                 </li>
                 <li class="nav navbar-nav right2">
                     <form class="form-inline my-2 my-lg-0 ">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search for more events">
-                        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+                        <input class="form-control mr-sm-2 event_search" placeholder="Search for more events">
+                        <button class="btn btn-outline-secondary my-2 my-sm-0 submit">
                             <i class="fa fa-search"></i>Search</button>
                     </form>
                 </li>
@@ -81,9 +83,9 @@
                         <div class="carousel-item">
                             <img src="assets/image/sample02.jpeg" class="d-block" alt="sample">
                         </div>
-                        <div class="carousel-item">
+                        <!-- <div class="carousel-item">
                             <img src="..." class="d-block w-100" alt="...">
-                        </div>
+                        </div> -->
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -94,7 +96,8 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-                <div class="calender">
+
+                <div class="displayEvents">
                     <p>a</p>
                 </div>
 
@@ -123,7 +126,8 @@
         <p>footer</p>
     </div>
 
-    <script src="javascript.js"></script>
+    <script src="assets/javascript/javascript.js"></script>
+
 </body>
 
 </html>
