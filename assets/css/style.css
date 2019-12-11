@@ -1,0 +1,26 @@
+.navbar-brand {
+    font-family: 'Lilita One', cursive;
+}
+
+/* nav {
+     
+} */
+
+
+.footer {
+    background-color: grey;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.right2 {
+    position: absolute;
+    margin-left: 1000px;
+}
+
+.right1 {
+    position: absolute;
+    margin-left: 700px;
+}
+

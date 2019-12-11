@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>test</title>
+
+</head>
+
+<body>
+    <div class="json"></div>
+
+    <script>
+        $(document).ready(function() {
+            var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
+            var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=Sydney&apikey=" + apiKey;
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(response);
+            });
+
+        });
+    </script>
+
+    <a href="http://getskeleton.com/#intro">Skeleton</a>
+    <hr>
+    <a href="https://get.foundation/sites/docs/index.html">Fundation</a>
+    <hr>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</body>
+
+</html>
