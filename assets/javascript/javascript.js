@@ -1,23 +1,23 @@
-$(document).ready(function () {
-    var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
+$(document).ready(function() {
+    var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap"; //TicketMaster
 
-
-
-    $("#searchbtn").on("click", function () {
+    $("#searchbtn").on("click", function() {
         event.preventDefault();
-        console.log('searchbeenclicked');
+        grabResponse();
+    });
+
+    function grabResponse() {
         var searchInput = $("#searchInput").val(); //keyword
-        console.log(searchInput);
 
         var country = "&countryCode=AU"; //country
-        if ($(".event_search").val() == null) {
-            var classificaiton = "&classificationName=sports" //classification
+        if ($(".searchInput").val() == null) {
+            var classificaiton = ""; //classification
         } else {
-            var classificaiton = "&classificationName=" + $(".event_search").val();
-        }
+            var classificaiton = "&classificationName=" + $(".searchInput").val();
+        };
 
-        var startDate = "&localStartDateTime=2019-12-01T01:00:00"; //date
-        var endDate = "&localStartEndDateTime=2020-08-01T24:00:00";
+        // var startDate = "&localStartDateTime=2019-12-01T01:00:00"; //date
+        // var endDate = "&localStartEndDateTime=2020-08-01T24:00:00";
         //"Query param: localStartEndDateTime - Range must be of a valid format.  
         //use * to designate an unbounded value. 
         //{example: range less then *,2020-08-01T14:00:00 greater: 2020-08-01T14:00:00,* between: 2020-07-08T14:00:00,2020-08-01T14:00:00}"
@@ -25,32 +25,45 @@ $(document).ready(function () {
             var responseNumber = "&size=20"; //response size
         } else {
             var responseNumber = "&size=" + $(".responseNumber").val();
-        }
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput +  "&apikey=" + apiKey;
-        console.log(responseNumber);
+        };
+        var callSingleEvent = "https://app.ticketmaster.com/discovery/v2/events/" + eventId + ".json?apikey=" + apiKey;
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + country + "&apikey=" + apiKey;
+
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function (response) {
+        }).then(function(response) {
             console.log(response);
             displayEvents(response);
         });
-    })
+    };
+
+
 
     function displayEvents(response) {
         for (var i = 0; i < 20; i++) {
+            var eventEl = response._embedded.events[i];
+            var eventDate = eventEl.dates.start.localDate;
+            var eventTime = eventEl.dates.start.localTime;
+            var eventImg = eventEl.images[0].url;
+            var eventHeader = eventEl.name;
+            var eventLink = eventEl.url;
+            var displayBox = $(".displayEvents");
+            var cardContainer = $("<div class=\"card\" style=\"width: 18rem;\">");
+            cardContainer.append("<img src=" + eventImg + " class=\"card-img-top\" alt=" + eventHeader + "></img>");
+            var cardBody = $("<div class=\"card-body\">");
+            var cardLink = $("<a href=" + eventLink + ">");
+            cardLink.append("<h5 class=\"card-title\">" + eventHeader + "</h5>");
+            cardBody.append(cardLink);
+            cardBody.append("<p class=\"card-text\">" + eventDate + " " + eventTime + "</p>");
+            cardBody.append("<a class=\"btn btn-primary\" id = \"saveEvent\">Add to favourite</a>"); //id saveEvent for like buttons
 
-            var eventDate = response._embedded.events[i].dates.start.dateTime;
-            var eventInfo = $(".displayEvents");
-            var eventDateEl = $("<div>").addClass("eventinfo");
-            console.log(response);
-            eventDateEl.text(eventDate);
-            eventInfo.append(eventDateEl);
+            cardContainer.append(cardBody);
+            displayBox.append(cardContainer);
 
-        }
+        };
 
-    }
+    };
 
 
 });
-
