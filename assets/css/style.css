@@ -36,3 +36,17 @@
 #eventNo {
     text-align: left !important;
 }
+
+#currentDate {
+    margin-top: -40px;
+    margin-left: 1100px;
+}
+
+@media screen and (max-width: 600px) {
+    #currentDate {
+        margin-top: 0px;
+        margin-left: 0px;
+        padding: 8px;
+        background-color: #d9d9d9;
+    }
+}    

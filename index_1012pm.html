@@ -37,7 +37,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Favourite</a>
+                    <a class="nav-link" href="favourite.html">My Favourite</a>
                 </li>
 
                 <!-- days left in the favourite -->
@@ -51,6 +51,10 @@
             </ul>
         </div>
     </nav>
+    <div class="row" id="currentDate">
+        <p class="col-sm-12">Date</p>
+    </div>
+
     <div class="container mb-5">
         <div class="row ml-5">
             <div class="col-md-10 m-auto">
@@ -81,9 +85,9 @@
                         id="searchInput">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" id="searchbtn">
                         <i class="fa fa-search"></i></button>
-                    <button class="btn btn-outline-secondary my-2 my-sm-0 ml-1" type="submit">
+                    <button class="btn btn-outline-secondary my-2 my-sm-0 ml-1" type="submit" id="arrowDown">
                         <i class="fa fa-chevron-down"></i></button>
-                    <div class="card w-75 ml-3 mt-3" style="display: none">
+                    <div class="card w-75 ml-3 mt-3" id="advanceSearch" hidden>
                         <div class="card-body">
                             <h5 class="row pl-3 card-title">Advance search</h5>
                             <div class="col-md-10">
@@ -93,11 +97,10 @@
                                 <form>
                                     <div class="form-group">
                                         <select class="col-md-10 form-control" id="numberSeletor">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
                                             <option>5</option>
+                                            <option>10</option>
+                                            <option>15</option>
+                                            <option>20</option>
                                         </select>
                                     </div>
                                 </form>
