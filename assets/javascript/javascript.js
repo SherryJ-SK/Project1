@@ -3,9 +3,11 @@ $(document).ready(function () {
 
 
 
-    $(".submit").on("click", function () {
+    $("#searchbtn").on("click", function () {
         event.preventDefault();
-        var searchInput = $(".event_search").val(); //keyword
+        console.log('searchbeenclicked');
+        var searchInput = $("#searchInput").val(); //keyword
+        console.log(searchInput);
 
         var country = "&countryCode=AU"; //country
         if ($(".event_search").val() == null) {
@@ -24,7 +26,7 @@ $(document).ready(function () {
         } else {
             var responseNumber = "&size=" + $(".responseNumber").val();
         }
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + country + classificaiton + responseNumber + "&apikey=" + apiKey;
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput +  "&apikey=" + apiKey;
         console.log(responseNumber);
         $.ajax({
             url: queryURL,
