@@ -12,10 +12,10 @@ $(document).ready(function() {
 
 
         var country = "&countryCode=AU"; //country
-        if ($(".searchInput").val() == null) {
+        if ($("#category").val() == null) {
             var classificaiton = ""; //classification
         } else {
-            var classificaiton = "&classificationName=" + $(".searchInput").val();
+            var classificaiton = "&classificationName=" + $("#category").val();
         };
 
         // var startDate = "&localStartDateTime=2019-12-01T01:00:00"; //date
@@ -28,8 +28,8 @@ $(document).ready(function() {
         } else {
             var responseNumber = "&size=" + $("#numberSeletor").val();
         };
-        var callSingleEvent = "https://app.ticketmaster.com/discovery/v2/events/" + eventId + ".json?apikey=" + apiKey;
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + country + "&apikey=" + apiKey;
+        //var callSingleEvent = "https://app.ticketmaster.com/discovery/v2/events/" + eventId + ".json?apikey=" + apiKey;
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + country + responseNumber + "&apikey=" + apiKey;
 
         $.ajax({
             url: queryURL,
