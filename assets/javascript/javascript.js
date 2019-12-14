@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap"; //TicketMaster
+    var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
+    var checker = false;
 
     $("#searchbtn").on("click", function() {
         event.preventDefault();
@@ -8,6 +9,7 @@ $(document).ready(function() {
 
     function grabResponse() {
         var searchInput = $("#searchInput").val(); //keyword
+
 
         var country = "&countryCode=AU"; //country
         if ($(".searchInput").val() == null) {
@@ -21,10 +23,10 @@ $(document).ready(function() {
         //"Query param: localStartEndDateTime - Range must be of a valid format.  
         //use * to designate an unbounded value. 
         //{example: range less then *,2020-08-01T14:00:00 greater: 2020-08-01T14:00:00,* between: 2020-07-08T14:00:00,2020-08-01T14:00:00}"
-        if ($(".responseNumber").val() == null) {
-            var responseNumber = "&size=20"; //response size
+        if ($("#numberSeletor").val() == null) {
+            var responseNumber = "&size=5"; //response size
         } else {
-            var responseNumber = "&size=" + $(".responseNumber").val();
+            var responseNumber = "&size=" + $("#numberSeletor").val();
         };
         var callSingleEvent = "https://app.ticketmaster.com/discovery/v2/events/" + eventId + ".json?apikey=" + apiKey;
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + country + "&apikey=" + apiKey;
@@ -38,6 +40,20 @@ $(document).ready(function() {
         });
     };
 
+
+
+
+    $("#arrowDown").click(function() {
+        event.preventDefault();
+
+        if (checker == false) {
+            $("#advanceSearch").attr("hidden", false);
+            checker = true;
+        } else if (checker == true) {
+            $("#advanceSearch").attr("hidden", true);
+            checker = false;
+        }
+    })
 
 
     function displayEvents(response) {
