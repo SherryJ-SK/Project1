@@ -12,6 +12,7 @@
     position: fixed;
     width: 100%;
     bottom: 0;
+    text-align: center;
 }
 
 .right2 {
@@ -24,3 +25,14 @@
     margin-left: 700px;
 }
 
+.d-block {
+    height: 500px !important;
+}
+
+#searchBox {
+    margin-top: 10px !important;
+}
+
+#eventNo {
+    text-align: left !important;
+}
