@@ -55,6 +55,7 @@ $(document).ready(function () {
 
 
     function displayEvents(response) {
+        console.log(response);
         for (var i = 0; i < 20; i++) {
             var eventEl = response._embedded.events[i];
             var eventDate = eventEl.dates.start.localDate;
@@ -62,6 +63,7 @@ $(document).ready(function () {
             var eventImg = eventEl.images[0].url;
             var eventHeader = eventEl.name;
             var eventLink = eventEl.url;
+            var eventId = eventEl.id;
             var displayBox = $(".displayEvents");
             var cardContainer = $("<div class=\"card mt-2\" style=\"width: 18rem;\">");
             cardContainer.append("<img src=" + eventImg + " class=\"card-img-top\" alt=" + eventHeader + "></img>");
@@ -78,6 +80,35 @@ $(document).ready(function () {
         };
 
     };
+
+    $(".displayEvents").on("click", ".saveEvent", function() {
+        var savedId = $(this).attr("data-id");
+        var filted = false;
+        var newInput = [{
+            "eventId": savedId,
+        }];
+
+        var events = JSON.parse(localStorage.getItem("events"));
+        if (events == null) {
+            events = [newInput];
+            localStorage.setItem("events", JSON.stringify(events));
+        } else {
+            for (var i = 0; i < events.length; i++) {
+                if (savedId === events[i][0].eventId) {
+                    filted = true;
+                }
+            };
+
+            if (filted == false) {
+                events.push(newInput);
+                localStorage.setItem("events", JSON.stringify(events));
+            }
+        }
+    });
+
+
+
+
 
 
 
