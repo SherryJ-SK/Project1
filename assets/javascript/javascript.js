@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     $("#searchbtn").on("click", function () {
         event.preventDefault();
+        $(".displayEvents").empty();
         grabResponse();
     });
 
@@ -72,7 +73,7 @@ $(document).ready(function () {
             cardLink.append("<h5 class=\"card-title\">" + eventHeader + "</h5>");
             cardBody.append(cardLink);
             cardBody.append("<p class=\"card-text\">" + eventDate + " " + eventTime + "</p>");
-            cardBody.append("<a class=\"btn btn-primary\" id = \"saveEvent\"><i class=\"fa fa-star\"></i></a>"); //id saveEvent for like buttons
+            cardBody.append("<a class=\"btn btn-primary saveEvent\" data-id=" + eventId + "><i class=\"fa fa-star\"></i></a>"); //id saveEvent for like buttons
 
             cardContainer.append(cardBody);
             displayBox.append(cardContainer);
@@ -81,7 +82,7 @@ $(document).ready(function () {
 
     };
 
-    $(".displayEvents").on("click", ".saveEvent", function() {
+    $(".displayEvents").on("click", ".saveEvent", function () {
         var savedId = $(this).attr("data-id");
         var filted = false;
         var newInput = [{
@@ -107,62 +108,61 @@ $(document).ready(function () {
     });
 
 
-
-
-
-
-
-
     // get local storage from show in the favourite page
     function savedEvents() {
 
         var savedEventString = localStorage.getItem("events");
         savedEventJSON = JSON.parse(savedEventString);
 
-        // if (savedEventJSON !== null) {
+        if (savedEventJSON !== null) {
 
-        //     for (var j = 0; j < savedEventJSON.length; j++) {
+            for (var j = 0; j < savedEventJSON.length; j++) {
+                console.log(j);
+                var savedEventId = savedEventJSON[j][0].eventId;
+                var callSingleEvent = "https://app.ticketmaster.com/discovery/v2/events/" + savedEventId + ".json?apikey=" + apiKey;
 
-        var savedEventId = "Z7r9jZ1AeqVx6";
-        var callSingleEvent = "https://app.ticketmaster.com/discovery/v2/events/" + savedEventId + ".json?apikey=" + apiKey;
+                $.ajax({
+                    url: callSingleEvent,
+                    method: "GET"
+                }).then(function (response) {
+                    console.log(response);
 
-        $.ajax({
-            url: callSingleEvent,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-            // to check if the ID has been saved and cannot be saved more than once!!
+                    var eventDate = response.dates.start.localDate;
+                    var newDate = moment(eventDate).format("DD/MM/YYYY");
+                    var eventTime = response.dates.start.localTime;
+                    var eventImg = response.images[0].url;
+                    var eventHeader = response.name;
+                    var eventLink = response.url;
 
-            // var eventEl = response._embedded.events[j];
-            var eventDate = response.dates.start.localDate;
-            // var newDate = eventDate.format("DD/MM/YYYY");
-            var eventTime = response.dates.start.localTime;
-            var eventImg = response.images[0].url;
-            var eventHeader = response.name;
-            var eventLink = response.url;
+                    var savedEventDiv = $("#savedEventsDiv"); // inside div under title
 
-            var savedEventDiv = $("#savedEventsDiv"); // inside div under title
+                    var eventTitle = $("<div class=\"card-header\">");
+                    var realTitle = eventTitle.text(eventHeader);
 
-            var savedEvent = $("<div class=\"savedEvents\" style=\"width: 100%\">"); //create new div
+                    var savedEvent = $("<div class=\"card savedEvents\" style=\"width: 43.5rem\">"); //create new div
+                    var newImage = $("<img src=" + eventImg + " class=\"card-img-top col-md-6\" alt=" + eventHeader + "></img>");
 
-            var newImage = $("<img src=" + eventImg + " class=\"card-img-top\" alt=" + eventHeader + "></img>");
+                    savedEvent.append(realTitle);
 
-            savedEvent.append(newImage);
+                    var divImg = $("<div class=\"row\">");
+                    divImg.append(newImage);
 
-            var eventBody = $("<div class=\"eventsBody\">");
-            var eventLink = $("<a href=" + eventLink + ">");
+                    var eventLink = $("<a href=" + eventLink + ">");
 
-            eventLink.append("<h5 class=\"eventTtitle\">" + eventHeader + "</h5>");
-            eventBody.append(eventLink);
+                    var eventBody = $("<div class=\"eventsBody col-md-6\">");
 
-            eventBody.append("<p class=\"card-text\">" + eventDate + " " + eventTime + "</p>");
+                    eventBody.append("<p class=\"card-text eventCard pt-2\">" + "Date: " + newDate + " " + eventTime + "</p>");
 
-            savedEvent.append(eventBody);
-            savedEventDiv.append(savedEvent);
+                    eventLink.append("<p class=\"card-title\">" + "More information" + "</p>");
+                    eventBody.append(eventLink);
 
-            //     }
-            // }
-        })
+                    divImg.append(eventBody)
+                    savedEvent.append(divImg);
+                    savedEventDiv.append(savedEvent);
+
+                })
+            }
+        }
     }
     savedEvents();
 

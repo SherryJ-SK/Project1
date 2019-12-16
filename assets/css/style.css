@@ -2,11 +2,6 @@
     font-family: 'Lilita One', cursive;
 }
 
-/* nav {
-     
-} */
-
-
 .footer {
     background-color: #d9d9d9;
     position: fixed;
@@ -46,6 +41,14 @@
     color: white;
 }
 
+.eventCard {
+    font-weight: bold;
+}
+
+.savedEvents {
+    margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 600px) {
     #currentDate {
         margin-top: 0px;
@@ -58,7 +61,7 @@
 @media screen and (max-width: 1000px) {
     #currentDate {
         margin-top: 0px;
-        margin-left: 600px;
+        margin-left: 0px;
         padding: 8px;
         background-color: #d9d9d9;
     }
