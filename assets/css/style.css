@@ -42,10 +42,23 @@
     margin-left: 1100px;
 }
 
+.fa-star {
+    color: white;
+}
+
 @media screen and (max-width: 600px) {
     #currentDate {
         margin-top: 0px;
         margin-left: 0px;
+        padding: 8px;
+        background-color: #d9d9d9;
+    }    
+}    
+
+@media screen and (max-width: 1000px) {
+    #currentDate {
+        margin-top: 0px;
+        margin-left: 600px;
         padding: 8px;
         background-color: #d9d9d9;
     }
