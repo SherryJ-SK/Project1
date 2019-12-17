@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+    var currentTime = $("#currentTime");
+    currentTime.text(moment().format('lll'));
+
     var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
     var checker = false;
 
@@ -60,7 +64,9 @@ $(document).ready(function () {
         for (var i = 0; i < 20; i++) {
             var eventEl = response._embedded.events[i];
             var eventDate = eventEl.dates.start.localDate;
+            var newDate = moment(eventDate).format("MMMM Do YYYY");
             var eventTime = eventEl.dates.start.localTime;
+            var newTime = moment(eventTime, "HH:mm:ss").format("h:mm a");
             var eventImg = eventEl.images[0].url;
             var eventHeader = eventEl.name;
             var eventLink = eventEl.url;
@@ -72,7 +78,7 @@ $(document).ready(function () {
             var cardLink = $("<a href=" + eventLink + ">");
             cardLink.append("<h5 class=\"card-title\">" + eventHeader + "</h5>");
             cardBody.append(cardLink);
-            cardBody.append("<p class=\"card-text\">" + eventDate + " " + eventTime + "</p>");
+            cardBody.append("<p class=\"card-text\">" + newTime + " " + newDate + "</p>");
             cardBody.append("<a class=\"btn btn-primary saveEvent\" data-id=" + eventId + "><i class=\"fa fa-star\"></i></a>"); //id saveEvent for like buttons
 
             cardContainer.append(cardBody);
@@ -130,6 +136,7 @@ $(document).ready(function () {
                     var eventDate = response.dates.start.localDate;
                     var newDate = moment(eventDate).format("DD/MM/YYYY");
                     var eventTime = response.dates.start.localTime;
+                    var newTime = moment(eventTime, "HH:mm:ss").format("HH:mm");
                     var eventImg = response.images[0].url;
                     var eventHeader = response.name;
                     var eventLink = response.url;
@@ -139,8 +146,8 @@ $(document).ready(function () {
                     var eventTitle = $("<div class=\"card-header\">");
                     var realTitle = eventTitle.text(eventHeader);
 
-                    var savedEvent = $("<div class=\"card savedEvents\" style=\"width: 43.5rem\">"); //create new div
-                    var newImage = $("<img src=" + eventImg + " class=\"card-img-top col-md-6\" alt=" + eventHeader + "></img>");
+                    var savedEvent = $("<div class=\"card savedEvents\" style=\"width: 100%\">"); //create new div
+                    var newImage = $("<img src=" + eventImg + " class=\"card-img-top col-md-4\"  alt=" + eventHeader + "></img>");
 
                     savedEvent.append(realTitle);
 
@@ -149,9 +156,11 @@ $(document).ready(function () {
 
                     var eventLink = $("<a href=" + eventLink + ">");
 
-                    var eventBody = $("<div class=\"eventsBody col-md-6\">");
+                    var eventBody = $("<div class=\"eventsBody col-md-8\">");
 
-                    eventBody.append("<p class=\"card-text eventCard pt-2\">" + "Date: " + newDate + " " + eventTime + "</p>");
+                    eventBody.append("<p class=\"card-text eventCard pt-3\">" + " Date: " + newDate + "</p>");
+                    eventBody.append("<p class=\"card-text eventCard\">" + " Time: " + newTime + "</p>");
+
 
                     eventLink.append("<p class=\"card-title\">" + "More information" + "</p>");
                     eventBody.append(eventLink);

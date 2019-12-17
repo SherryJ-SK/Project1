@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Sanchez|Varela&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -24,43 +24,44 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">My Events</a>
+    <div class="brandname">
+        <a class="navbar-brand" href="index_1012pm.html">My Events</a>
+        <p id="currentTime"></p>
+    </div>
+
+    <nav class="navbar navbar-expand-lg shadow">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa fa-align-justify"></i>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index_1012pm.html">Home</a>
+                    <a class="nav-link" href="index_1012pm.html">
+                        <i class="fa fa-home"></i>
+                        Home</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">My Favourite <span class="sr-only">(current)</span></a>
-                </li>
-
-                <!-- days left in the favourite -->
-
-                <!-- <li class="nav-item right1">
+                <li class="nav-item">
+                    <a class="nav-link">My Favourite
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    <!-- </li>
+                <li class="nav-item">
                     <a class="nav-link">
-                        Days left for your next event:
+                        Calender
                     </a>
                 </li> -->
-
             </ul>
         </div>
     </nav>
-    <div class="row" id="currentDate">
-        <p class="col-sm-12">Date</p>
-    </div>
-    <div class="row my-2">
-        <div class="col-md-8 mx-auto mb-5 border rounded ">
-            <h3 class="text-center">My Favourite Events</h3>
+    <div class="row my-2 eventBox">
+        <div class="col-md-8 mx-auto mb-5 border rounded mt-2">
+            <h3 class="text-center">
+                <i class="fa fa-bookmark"></i>
+                My Favourite Events</h3>
             <hr>
             <div id="savedEventsDiv">
-
-            </div><!--  events from local storage  -->
+            </div>
         </div>
     </div>
 
