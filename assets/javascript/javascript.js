@@ -1,9 +1,10 @@
+
 $(document).ready(function () {
+    $(document).foundation();
     var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
 
-
-
-    $(".submit").on("click", function () {
+    $("#searchBtn").on("click", function () {
+        console.log('search buttn clicked');
         event.preventDefault();
         var searchInput = $(".event_search").val(); //keyword
 
