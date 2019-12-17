@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *,
 *::before,
 *::after {
@@ -467,14 +468,74 @@ hr {
 /* index.html styles */
 .navbar-brand {
     font-family: 'Lilita One', cursive;
+=======
+.navbar-brand {
+    font-family: 'Fredoka One', cursive;
+    font-size: xx-large;
+    margin-left: 40px;
+    color: #7575a3;
+}
+
+.navbar-brand:hover {
+    color: #5c5c8a;
+}
+
+.nav-item {
+    margin-left: 20px;
+    font-family: 'Varela', sans-serif;
+}
+
+.navbar {
+    background-color: #cccccc;
+    box-shadow:#a6a6a6;
+    margin-right: 0;
+}
+
+.nav-link {
+    color: #595959;
+}
+
+.nav-link:hover {
+    color: #5c5c8a;
+    text-shadow: black;
+}
+
+.keyIn {
+    font-family: 'Varela', sans-serif;
+    font-size: 1.5rem;
+}
+
+#advanceSearch {
+    background-color: #a6a6a6;
+}
+
+#currentTime {
+    margin-left: 18rem;
+    margin-top: -2.45rem;
+    color: #999999;
+    font-family: 'Varela', sans-serif;
+}
+.text-center {
+    font-family: 'Sanchez', serif;
+    margin-top: 1rem;
+}
+
+.fa-bookmark {
+    color: #990033;
+}
+
+.fa-align-justify {
+    color: #595959;
+>>>>>>> 3b3a0343db5b33ae1ead12be923bb6d6289177f1
 }
 
 .footer {
-    background-color: grey;
+    background-color: #d9d9d9;
     position: fixed;
     width: 100%;
     bottom: 0;
     text-align: center;
+    font-family: 'Varela', sans-serif;
 }
 
 .right2 {
@@ -488,13 +549,74 @@ hr {
 }
 
 .d-block {
-    height: 500px !important;
+    margin-top: 1rem;
+    height: 500px;
 }
 
 #searchBox {
     margin-top: 10px !important;
+    margin-left: 0.3rem;
+    margin-right: 1rem;
 }
 
 #eventNo {
     text-align: left !important;
 }
+
+#currentDate {
+    position: relative;
+    margin-top: -40px;
+    margin-left: 18rem;
+}
+
+.fa-star {
+    color: white;
+}
+
+.eventCard {
+    font-weight: bold;
+}
+
+.savedEvents {
+    margin-bottom: 1rem;
+}
+
+.card-img-top {
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    #currentTime {
+        font-size: 0.8rem;
+        margin-left: 16rem;;
+    }    
+    .navbar-brand {
+        font-family: 'Fredoka One', cursive;
+        font-size: 2.3rem;
+        margin-left: 40px;
+        color: #7575a3;
+    }
+    .d-block {
+        height: 11.8rem;
+    }
+    #savedEventsDiv {
+        margin-left: 2.5rem;
+        width: 18rem;
+    }
+    .eventBox {
+        margin-right: 0.5rem;
+        margin-left: 0.2rem;
+
+    }
+    .eventsBody {
+        padding-left: 2rem;;
+    }
+    .keyIn {
+        font-family: 'Varela', sans-serif;
+        font-size: 1rem;
+    }
+    .footer {
+        font-size: x-small;
+    }
+    
+}    
