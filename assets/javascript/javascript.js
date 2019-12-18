@@ -5,19 +5,54 @@ $(document).ready(function() {
 
     var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
     var checker = false;
+    var deviceLat = "";
+    var deviceLon = "";
 
+    //search button start parse from API on click
     $("#searchbtn").on("click", function() {
         event.preventDefault();
         $(".displayEvents").empty();
         grabResponse();
     });
+    //get current device location
+    getDeviceLoc();
+    //get current device location function
+    function getDeviceLoc() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(geoSucc, showError);
+        };
 
+        function geoSucc(position) {
+            deviceLat = position.coords.latitude;
+            deviceLon = position.coords.longitude;
+        };
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            };
+
+        }
+    }
+
+    //parse search result from API
     function grabResponse() {
         //keyword inputed by user
         var searchInput = $("#searchInput").val();
 
-        //country set as AU
-        var country = "&countryCode=AU";
+        //country set as AU changed by using geolocation
+        //var country = "&countryCode=AU";
 
         //Classification, set as default none if no input from user
         if ($("#category").val() == null) {
@@ -31,8 +66,14 @@ $(document).ready(function() {
         } else {
             var responseNumber = "&size=" + $("#numberSeletor").val();
         };
+        //reponse of the location of current device
+        if (deviceLat == null && deviceLon == null) {
+            var geoSearch = ""; //response size
+        } else {
+            var geoSearch = "&latlong=" + deviceLat + "," + deviceLon;
+        };
         //API from ticketmaster
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + country + responseNumber + "&apikey=" + apiKey;
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + geoSearch + responseNumber + "&apikey=" + apiKey;
         //parse response from ticketmaster and enter displayEvent function
         $.ajax({
             url: queryURL,
@@ -88,6 +129,7 @@ $(document).ready(function() {
         };
 
     };
+
     //search results has a "like" button to add them into favourite page
     //on click these "like" buttons can add them to local storage
     $(".displayEvents").on("click", ".saveEvent", function() {
@@ -146,7 +188,6 @@ $(document).ready(function() {
                     var eventLink = response.url;
                     //days before event you like
                     var daysLeft = Math.abs(moment().diff(eventDate, "days"));
-                    console.log(daysLeft);
 
                     var savedEventDiv = $("#savedEventsDiv"); // inside div under title
 
@@ -182,7 +223,8 @@ $(document).ready(function() {
             }
         }
     }
-    //call function to display in favourite page
+
+    //call function to display in favourite page on load
     savedEvents();
 
 });
