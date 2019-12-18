@@ -144,6 +144,9 @@ $(document).ready(function() {
                     var eventImg = response.images[0].url;
                     var eventHeader = response.name;
                     var eventLink = response.url;
+                    //days before event you like
+                    var daysLeft = Math.abs(moment().diff(eventDate, "days"));
+                    console.log(daysLeft);
 
                     var savedEventDiv = $("#savedEventsDiv"); // inside div under title
 
@@ -161,10 +164,12 @@ $(document).ready(function() {
                     var eventLink = $("<a href=" + eventLink + ">");
 
                     var eventBody = $("<div class=\"eventsBody col-md-8\">");
-
+                    //event date appended int card
                     eventBody.append("<p class=\"card-text eventCard pt-3\">" + " Date: " + newDate + "</p>");
+                    //event time appended into card
                     eventBody.append("<p class=\"card-text eventCard\">" + " Time: " + newTime + "</p>");
-
+                    //days left appended into card
+                    eventBody.append("<p class=\"card-text eventCard\">" + daysLeft + " Days left</p>");
 
                     eventLink.append("<p class=\"card-title\">" + "More information" + "</p>");
                     eventBody.append(eventLink);
