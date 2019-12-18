@@ -1,12 +1,4 @@
-
-$(document).ready(function () {
-<<<<<<< HEAD
-    $(document).foundation();
-    var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
-
-    $("#searchBtn").on("click", function () {
-        console.log('search buttn clicked');
-=======
+$(document).ready(function() {
 
     var currentTime = $("#currentTime");
     currentTime.text(moment().format('lll'));
@@ -14,48 +6,45 @@ $(document).ready(function () {
     var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
     var checker = false;
 
-    $("#searchbtn").on("click", function () {
->>>>>>> 3b3a0343db5b33ae1ead12be923bb6d6289177f1
+    $("#searchbtn").on("click", function() {
         event.preventDefault();
         $(".displayEvents").empty();
         grabResponse();
     });
 
     function grabResponse() {
-        var searchInput = $("#searchInput").val(); //keyword
+        //keyword inputed by user
+        var searchInput = $("#searchInput").val();
 
+        //country set as AU
+        var country = "&countryCode=AU";
 
-        var country = "&countryCode=AU"; //country
+        //Classification, set as default none if no input from user
         if ($("#category").val() == null) {
-            var classificaiton = ""; //classification
+            var classificaiton = "";
         } else {
             var classificaiton = "&classificationName=" + $("#category").val();
         };
-
-        // var startDate = "&localStartDateTime=2019-12-01T01:00:00"; //date
-        // var endDate = "&localStartEndDateTime=2020-08-01T24:00:00";
-        //"Query param: localStartEndDateTime - Range must be of a valid format.  
-        //use * to designate an unbounded value. 
-        //{example: range less then *,2020-08-01T14:00:00 greater: 2020-08-01T14:00:00,* between: 2020-07-08T14:00:00,2020-08-01T14:00:00}"
+        //responsesize, set as default 5 if user input is null
         if ($("#numberSeletor").val() == null) {
             var responseNumber = "&size=5"; //response size
         } else {
             var responseNumber = "&size=" + $("#numberSeletor").val();
         };
-        //var callSingleEvent = "https://app.ticketmaster.com/discovery/v2/events/" + eventId + ".json?apikey=" + apiKey;
+        //API from ticketmaster
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + country + responseNumber + "&apikey=" + apiKey;
-
+        //parse response from ticketmaster and enter displayEvent function
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function (response) {
+        }).then(function(response) {
             console.log(response);
             displayEvents(response);
         });
     };
 
-
-    $("#arrowDown").click(function () {
+    //display more search parameters on click
+    $("#arrowDown").click(function() {
         event.preventDefault();
 
         if (checker == false) {
@@ -67,10 +56,12 @@ $(document).ready(function () {
         }
     })
 
-
+    //display search response for home page
     function displayEvents(response) {
         console.log(response);
+        //loop through search response to display them
         for (var i = 0; i < 20; i++) {
+            //parse from json for the needed data
             var eventEl = response._embedded.events[i];
             var eventDate = eventEl.dates.start.localDate;
             var newDate = moment(eventDate).format("MMMM Do YYYY");
@@ -80,6 +71,7 @@ $(document).ready(function () {
             var eventHeader = eventEl.name;
             var eventLink = eventEl.url;
             var eventId = eventEl.id;
+            //display in display area using card 
             var displayBox = $(".displayEvents");
             var cardContainer = $("<div class=\"card mt-2\" style=\"width: 18rem;\">");
             cardContainer.append("<img src=" + eventImg + " class=\"card-img-top\" alt=" + eventHeader + "></img>");
@@ -96,8 +88,9 @@ $(document).ready(function () {
         };
 
     };
-
-    $(".displayEvents").on("click", ".saveEvent", function () {
+    //search results has a "like" button to add them into favourite page
+    //on click these "like" buttons can add them to local storage
+    $(".displayEvents").on("click", ".saveEvent", function() {
         var savedId = $(this).attr("data-id");
         var filted = false;
         var newInput = [{
@@ -109,6 +102,8 @@ $(document).ready(function () {
             events = [newInput];
             localStorage.setItem("events", JSON.stringify(events));
         } else {
+            //loop through localstorage first to see if there is repetitive events
+            //to prevent from repetitive saving
             for (var i = 0; i < events.length; i++) {
                 if (savedId === events[i][0].eventId) {
                     filted = true;
@@ -123,14 +118,14 @@ $(document).ready(function () {
     });
 
 
-    // get local storage from show in the favourite page
+    // get local storage and show in the favourite page
     function savedEvents() {
 
         var savedEventString = localStorage.getItem("events");
         savedEventJSON = JSON.parse(savedEventString);
-
+        //check if there is data stored in localstorage to prevent error
         if (savedEventJSON !== null) {
-
+            //loop through localstorage to search them again using ID search from Ticketmaster API
             for (var j = 0; j < savedEventJSON.length; j++) {
                 console.log(j);
                 var savedEventId = savedEventJSON[j][0].eventId;
@@ -139,9 +134,9 @@ $(document).ready(function () {
                 $.ajax({
                     url: callSingleEvent,
                     method: "GET"
-                }).then(function (response) {
+                }).then(function(response) {
                     console.log(response);
-
+                    //parse required data from json
                     var eventDate = response.dates.start.localDate;
                     var newDate = moment(eventDate).format("DD/MM/YYYY");
                     var eventTime = response.dates.start.localTime;
@@ -182,6 +177,7 @@ $(document).ready(function () {
             }
         }
     }
+    //call function to display in favourite page
     savedEvents();
 
 });
