@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     var currentTime = $("#currentTime");
     currentTime.text(moment().format('lll'));
 
@@ -83,11 +82,9 @@ $(document).ready(function() {
             displayEvents(response);
         });
     };
-
     //display more search parameters on click
     $("#arrowDown").click(function() {
         event.preventDefault();
-
         if (checker == false) {
             $("#advanceSearch").attr("hidden", false);
             checker = true;
@@ -96,7 +93,6 @@ $(document).ready(function() {
             checker = false;
         }
     })
-
     //display search response for home page
     function displayEvents(response) {
         console.log(response);
@@ -122,10 +118,8 @@ $(document).ready(function() {
             cardBody.append(cardLink);
             cardBody.append("<p class=\"card-text\">" + newTime + " " + newDate + "</p>");
             cardBody.append("<a class=\"btn btn-primary saveEvent\" data-id=" + eventId + "><i class=\"fa fa-star\"></i></a>"); //id saveEvent for like buttons
-
             cardContainer.append(cardBody);
             displayBox.append(cardContainer);
-
         };
 
     };
@@ -138,7 +132,6 @@ $(document).ready(function() {
         var newInput = [{
             "eventId": savedId,
         }];
-
         var events = JSON.parse(localStorage.getItem("events"));
         if (events == null) {
             events = [newInput];
@@ -151,18 +144,14 @@ $(document).ready(function() {
                     filted = true;
                 }
             };
-
             if (filted == false) {
                 events.push(newInput);
                 localStorage.setItem("events", JSON.stringify(events));
             }
         }
     });
-
-
     // get local storage and show in the favourite page
     function savedEvents() {
-
         var savedEventString = localStorage.getItem("events");
         savedEventJSON = JSON.parse(savedEventString);
         //check if there is data stored in localstorage to prevent error
@@ -172,7 +161,6 @@ $(document).ready(function() {
                 console.log(j);
                 var savedEventId = savedEventJSON[j][0].eventId;
                 var callSingleEvent = "https://app.ticketmaster.com/discovery/v2/events/" + savedEventId + ".json?apikey=" + apiKey;
-
                 $.ajax({
                     url: callSingleEvent,
                     method: "GET"
@@ -193,17 +181,12 @@ $(document).ready(function() {
 
                     var eventTitle = $("<div class=\"card-header\">");
                     var realTitle = eventTitle.text(eventHeader);
-
                     var savedEvent = $("<div class=\"card savedEvents\" style=\"width: 100%\">"); //create new div
                     var newImage = $("<img src=" + eventImg + " class=\"card-img-top col-md-4\"  alt=" + eventHeader + "></img>");
-
                     savedEvent.append(realTitle);
-
                     var divImg = $("<div class=\"row\">");
                     divImg.append(newImage);
-
                     var eventLink = $("<a href=" + eventLink + ">");
-
                     var eventBody = $("<div class=\"eventsBody col-md-8\">");
                     //event date appended int card
                     eventBody.append("<p class=\"card-text eventCard pt-3\">" + " Date: " + newDate + "</p>");
@@ -211,14 +194,11 @@ $(document).ready(function() {
                     eventBody.append("<p class=\"card-text eventCard\">" + " Time: " + newTime + "</p>");
                     //days left appended into card
                     eventBody.append("<p class=\"card-text eventCard\">" + daysLeft + " Days left</p>");
-
                     eventLink.append("<p class=\"card-title\">" + "More information" + "</p>");
                     eventBody.append(eventLink);
-
                     divImg.append(eventBody)
                     savedEvent.append(divImg);
                     savedEventDiv.append(savedEvent);
-
                 })
             }
         }
@@ -227,4 +207,4 @@ $(document).ready(function() {
     //call function to display in favourite page on load
     savedEvents();
 
-});
+}); 
