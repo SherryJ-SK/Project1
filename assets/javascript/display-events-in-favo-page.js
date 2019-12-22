@@ -14,6 +14,7 @@ $(document).ready(function () {
                 var eventImg = savedEventJSON[j][0].eventImg;
                 var eventHeader = savedEventJSON[j][0].eventName;
                 var eventLink = savedEventJSON[j][0].eventLink;
+                var eventId = savedEventJSON[j][0].eventId;
                 var savedEventDiv = $("#savedEventsDiv"); // inside div under title
                 var eventTitle = $("<div class=\"card-header\">");
                 var realTitle = eventTitle.text(eventHeader);
@@ -34,7 +35,7 @@ $(document).ready(function () {
 
                 var deleteDiv = $("<div>").addClass('deleteBtn col-md-2');
                 var deleteBtn = $("<button>").addClass('btn btn-light deleteBtn fa fa-trash-o');
-                deleteBtn.attr('id', eventHeader);
+                deleteBtn.attr('id', eventId);
 
                 eventBody.append(eventLink);
                 divImg.append(eventBody);
@@ -54,25 +55,26 @@ $(document).ready(function () {
         };
 
     };
-
     savedEvents();
 
-//remove button
+    //remove button
     function removeEvent() {
-        event.preventDefault();
-        console.log('button clicked');
+        var eventId = event.target.id;
 
-        var savedEventString = localStorage.getItem("events");
+        var savedEventString = localStorage.getItem("selected");
         savedEventJSON = JSON.parse(savedEventString);
 
-        var eventId = $(this).attr("id");
         console.log(eventId);
 
         if (savedEventJSON !== null) {
             for (var x = 0; x < savedEventJSON.length; x++) {
 
                 if (eventId == savedEventJSON[x][0].eventId) {
-                    // localStorage.removeItem("events", eventId);
+                    console.log(x);
+                    // alert("If event has been deleted, you will need to add it again. Are you sure you want to do that?");
+                    savedEventJSON.splice(x, 1);
+                    localStorage.setItem('selected', JSON.stringify(savedEventJSON));
+                    window.location.reload();
                 }
             }
         }

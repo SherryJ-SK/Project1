@@ -3,7 +3,8 @@ $(document).ready(function () {
     var currentTime = $("#currentTime");
     currentTime.text(moment().format('lll'));
 
-    var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
+    // var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
+    var apiKey = "93sIViJs6exJuIwcNtKqMSGIAdp1eJV9" //backup
     var checker = false;
     var deviceLat = "";
     var deviceLon = "";
@@ -142,7 +143,6 @@ $(document).ready(function () {
 
             savedNameJSON.push(newInput);
             localStorage.setItem("events", JSON.stringify(savedNameJSON));
-
         };
 
     };
@@ -180,6 +180,8 @@ $(document).ready(function () {
     //     }
     // }
 
+    //button clicked to save event into favourite page
+    //grab information from existing array and store into new array show in favourite page
     $(".displayEvents").on("click", ".saveEvent", saveEventToLocal);
 
     function saveEventToLocal() {
@@ -187,27 +189,79 @@ $(document).ready(function () {
         var savedName = $(this).attr("id");
         var eventsList = JSON.parse(localStorage.getItem("events"));
 
-        console.log(eventsList);
+        // create new array using the information in existing array
+        var selectedString = localStorage.getItem("selected");
+        selectedJSON = JSON.parse(selectedString) // || []; 
 
-        for (var a = 0; a < eventsList.length; a++){
-            if (savedName == eventsList[a][0].eventId){
-                var selectedString = localStorage.getItem("selected");
-                selectedJSON = JSON.parse(selectedString) || [];
-    
-                var selectedInput = [{
-                    "eventId": eventsList[a][0].eventId,
-                    "eventName": eventsList[a][0].eventName,
-                    "eventDate": eventsList[a][0].eventDate,
-                    "eventTime": eventsList[a][0].eventTime,
-                    "eventImg": eventsList[a][0].eventImg,
-                    "eventLink": eventsList[a][0].eventLink
-                }];
-    
-                selectedJSON.push(selectedInput);
-                localStorage.setItem("selected", JSON.stringify(selectedJSON));
-    
+        if (selectedJSON == null) {
+
+            var selectedJSON = [];
+            for (var a = 0; a < eventsList.length; a++) {
+                if (savedName == eventsList[a][0].eventId) {
+
+                    var selectedInput = [{
+                        "eventName": eventsList[a][0].eventName,
+                        "eventDate": eventsList[a][0].eventDate,
+                        "eventTime": eventsList[a][0].eventTime,
+                        "eventImg": eventsList[a][0].eventImg,
+                        "eventLink": eventsList[a][0].eventLink,
+                        "eventId": eventsList[a][0].eventId
+                    }]
+
+                    selectedJSON.push(selectedInput);
+                    localStorage.setItem("selected", JSON.stringify(selectedJSON));
+
+                }
             }
         }
+        else {
+            //check if event has been stored in the new array
+            //if event alreadd exist, it won't be double saved
+            var checker = search(savedName, selectedJSON);
+            console.log(checker);
+            if (checker) {
+                console.log("exist!");
+            }
+            else {
+                for (var a = 0; a < eventsList.length; a++) {
 
+                    if (savedName == eventsList[a][0].eventId) {
+
+                        var selectedInput = [{
+                            "eventName": eventsList[a][0].eventName,
+                            "eventDate": eventsList[a][0].eventDate,
+                            "eventTime": eventsList[a][0].eventTime,
+                            "eventImg": eventsList[a][0].eventImg,
+                            "eventLink": eventsList[a][0].eventLink,
+                            "eventId": eventsList[a][0].eventId
+                        }]
+
+                        selectedJSON.push(selectedInput);
+                        localStorage.setItem("selected", JSON.stringify(selectedJSON));
+                    }
+
+                }
+            }
+        }
+    }
+
+    //to clean localstorage to make sure the page load speed
+    function cleanLocalStorage() {
+        var eventsList = JSON.parse(localStorage.getItem("events"));
+        if (eventsList.length >= 20) {
+            localStorage.removeItem("events");
+        } else {
+            console.log("this is working");
+        }
+    }
+    cleanLocalStorage();
+
+    //event checking function 
+    function search(id, inputArray) {
+        for (var m = 0; m < inputArray.length; m++) {
+            if (inputArray[m][0].eventId === id) {
+                return true;
+            }
+        }
     }
 });
