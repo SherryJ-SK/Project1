@@ -84,16 +84,16 @@ $(document).ready(function() {
     };
     //display more search parameters on click
     $("#arrowDown").click(function() {
-        event.preventDefault();
-        if (checker == false) {
-            $("#advanceSearch").attr("hidden", false);
-            checker = true;
-        } else if (checker == true) {
-            $("#advanceSearch").attr("hidden", true);
-            checker = false;
-        }
-    })
-    //display search response for home page
+            event.preventDefault();
+            if (checker == false) {
+                $("#advanceSearch").attr("hidden", false);
+                checker = true;
+            } else if (checker == true) {
+                $("#advanceSearch").attr("hidden", true);
+                checker = false;
+            }
+        })
+        //display search response for home page
     function displayEvents(response) {
         console.log(response);
         //loop through search response to display them
@@ -207,4 +207,4 @@ $(document).ready(function() {
     //call function to display in favourite page on load
     savedEvents();
 
-}); 
+});

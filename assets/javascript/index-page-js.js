@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     var currentTime = $("#currentTime");
     currentTime.text(moment().format('lll'));
@@ -10,9 +10,10 @@ $(document).ready(function () {
     var deviceLon = "";
 
     //search button start parse from API on click
-    $("#searchbtn").on("click", function () {
+    $("#searchbtn").on("click", function() {
         event.preventDefault();
         $(".displayEvents").empty();
+        localStorage.removeItem("events"); //clean localstorage
         grabResponse();
     });
     //get current device location
@@ -31,16 +32,16 @@ $(document).ready(function () {
         function showError(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
-                    x.innerHTML = "User denied the request for Geolocation."
+                    // "User denied the request for Geolocation."
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    x.innerHTML = "Location information is unavailable."
+                    //  "Location information is unavailable."
                     break;
                 case error.TIMEOUT:
-                    x.innerHTML = "The request to get user location timed out."
+                    //  "The request to get user location timed out."
                     break;
                 case error.UNKNOWN_ERROR:
-                    x.innerHTML = "An unknown error occurred."
+                    //  "An unknown error occurred."
                     break;
             };
 
@@ -68,18 +69,19 @@ $(document).ready(function () {
             var responseNumber = "&size=" + $("#numberSeletor").val();
         };
         //reponse of the location of current device
-        if (deviceLat == null && deviceLon == null) {
+        if (deviceLat == "" && deviceLon == "") {
             var geoSearch = ""; //response size
         } else {
             var geoSearch = "&latlong=" + deviceLat + "," + deviceLon;
         };
         //API from ticketmaster
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + geoSearch + responseNumber + "&apikey=" + apiKey;
+        console.log(queryURL);
         //parse response from ticketmaster and enter displayEvent function
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function (response) {
+        }).then(function(response) {
             console.log(response);
             displayEvents(response);
         });
@@ -87,7 +89,7 @@ $(document).ready(function () {
     };
 
     //display more search parameters on click
-    $("#arrowDown").click(function () {
+    $("#arrowDown").click(function() {
         event.preventDefault();
 
         if (checker == false) {
@@ -135,8 +137,8 @@ $(document).ready(function () {
             var newInput = [{
                 "eventId": eventId,
                 "eventName": eventHeader,
-                "eventDate": newDate,
-                "eventTime": newTime,
+                "eventDate": eventDate,
+                "eventTime": eventTime,
                 "eventImg": eventImg,
                 "eventLink": eventLink
             }];
@@ -213,16 +215,14 @@ $(document).ready(function () {
 
                 }
             }
-        }
-        else {
+        } else {
             //check if event has been stored in the new array
             //if event alreadd exist, it won't be double saved
             var checker = search(savedName, selectedJSON);
             console.log(checker);
             if (checker) {
                 console.log("exist!");
-            }
-            else {
+            } else {
                 for (var a = 0; a < eventsList.length; a++) {
 
                     if (savedName == eventsList[a][0].eventId) {
@@ -244,17 +244,6 @@ $(document).ready(function () {
             }
         }
     }
-
-    //to clean localstorage to make sure the page load speed
-    function cleanLocalStorage() {
-        var eventsList = JSON.parse(localStorage.getItem("events"));
-        if (eventsList.length >= 20) {
-            localStorage.removeItem("events");
-        } else {
-            console.log("this is working");
-        }
-    }
-    cleanLocalStorage();
 
     //event checking function 
     function search(id, inputArray) {
