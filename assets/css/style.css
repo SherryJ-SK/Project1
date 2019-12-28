@@ -23,10 +23,29 @@ html, body {
 
 .nav-wrapper {
     background-color: #666666;
-    padding-left: 15px;
     /* width: 225px; */
     /* margin: 0 auto; */
     /* max-width: 992px; */
+}
+
+.brand-logo {
+    margin-right: 20px;
+}
+.brandname {
+    background-color: #ffffff;
+    padding: 20px 0px;
+    margin-bottom: 0;
+}
+.navbar-brand {
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px !important;
+    margin-left: 40px;
+    color: #7575a3;
+}
+
+#currentTime {
+    color: #999999;
+    font-family: 'Varela', sans-serif;
 }
 
 .lead {
@@ -66,14 +85,16 @@ html, body {
     font-family: "Georgia", "Times New Roman", Times, serif;
     text-align: center;
     /* padding: 5px 1px 5px 1px; */
-    width: 100px;
+    width: 150px !important;
     /* border-style: solid;
     border-width: 1px;
     border-color: #cccccc; */
 }
-
+.fa {
+    margin-right: 5px;
+}
 a {
-    font-size: 16px !important;
+    font-size: 18px !important;
     /* text-align: center !important; */
 }
 
@@ -118,7 +139,7 @@ a:focus {
     /* background-color: #efeee7; */
     background: #cccccc;
     margin: 0;
-    /* padding-top: 30px; */
+    padding-top: 30px;
     padding-bottom:100px;
     flex: 1 0 auto;
 }
@@ -145,15 +166,30 @@ a:focus {
     padding: 0;
 }
 
-#searchInput {
+#searchInput,
+#category,
+#numberSelector {
+    height: 35px;
     margin-bottom: 0;
-    background-color: #666666;
+    background-color: #ffffff;
     padding-left: 20px;
     margin-right: 20px;
     border: 1px solid hsl(var(--hue), 100%, 30%);
     border-radius: 5px;
 }
 
+#category,
+#numberSelector {
+    padding-left: 20px;
+    width: 100%;
+}
+
+.cardHeader {
+    font-family: "Georgia", "Times New Roman", Times, serif;
+    font-size: 28px;
+    margin: 0px 0px 10px 0px;
+    padding: 0;
+}
 .searchContent {
     padding: 0px 10px 10px 10px;
 }
@@ -185,7 +221,7 @@ h2 {
 
 h3 {
     font-family: "Georgia", "Times New Roman", Times, serif;
-    color: #333333;
+    color: #ffffff;
     margin-left: 10px;
     text-align: left;
     padding-top: 20px;
@@ -269,6 +305,11 @@ hr {
 
 .searchBtn {
     padding: 0 !important;
+}
+#advanceSearch {
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    border-radius: 10px;
+    padding-right: 50px;
 }
 
 .savedCityBtn {

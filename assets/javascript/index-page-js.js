@@ -10,7 +10,7 @@ $(document).ready(function() {
     var deviceLon = "";
 
     //search button start parse from API on click
-    $("#searchbtn").on("click", function() {
+    $("#searchBtn").on("click", function() {
         event.preventDefault();
         $(".displayEvents").empty();
         localStorage.removeItem("events"); //clean localstorage
@@ -44,7 +44,6 @@ $(document).ready(function() {
                     //  "An unknown error occurred."
                     break;
             };
-
         }
     }
 
@@ -58,24 +57,29 @@ $(document).ready(function() {
 
         //Classification, set as default none if no input from user
         if ($("#category").val() == null) {
-            var classificaiton = "";
+            var classification = "";
         } else {
-            var classificaiton = "&classificationName=" + $("#category").val();
+            classification = "&classificationName=" + $("#category").val();
         };
         //responsesize, set as default 5 if user input is null
-        if ($("#numberSeletor").val() == null) {
+        if ($("#numberSelector").val() == null) {
             var responseNumber = "&size=5"; //response size
         } else {
-            var responseNumber = "&size=" + $("#numberSeletor").val();
+            responseNumber = "&size=" + $("#numberSelector").val();
         };
         //reponse of the location of current device
         if (deviceLat == "" && deviceLon == "") {
             var geoSearch = ""; //response size
         } else {
-            var geoSearch = "&latlong=" + deviceLat + "," + deviceLon;
+            geoSearch = "&latlong=" + deviceLat + "," + deviceLon;
         };
         //API from ticketmaster
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + geoSearch + responseNumber + "&apikey=" + apiKey;
+        console.log(searchInput);
+        console.log(classification);
+        console.log(responseNumber);
+        console.log(geoSearch);
+
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + responseNumber + classification + "&apikey=" + apiKey;
         console.log(queryURL);
         //parse response from ticketmaster and enter displayEvent function
         $.ajax({
