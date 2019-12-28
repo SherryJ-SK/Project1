@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Events</title>
+    <title>myEvents</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -54,18 +54,47 @@
                         <a href='#one!' class='carousel-item'><img src='assets/image/sample01.jpg' alt=''></a>
                         <a href='#two!' class='carousel-item'><img src='assets/image/sample02.jpeg' alt=''></a>
                         <a href='#three!' class='carousel-item'><img src='assets/image/sample03.jpeg' alt=''></a>
-    
+
                     </div>
 
                 </div>
-            </div>
+
+                <form class="col s12" id='searchBox'>
+                    <p class="keyIn">Looking for amazing events key in the box!</p>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input placeholder="" id="searchInput" type="search" class="validate" onfocus="this.value=''">
+                            <!-- <label for="first_name">Search</label> -->
+                        </div>
+                        <div class="col s1" id='searchBtn'>
+                            <a class="waves-effect waves-light btn"><i class="fa fa-search"></i></a>
+                        </div>
+                        <div class="col s1" id='arrowDown'>
+                            <a class="waves-effect waves-light btn"><i class="fa fa-chevron-down"></i></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m8">
+                            <div class="card blue-grey darken-1" id='advanceSearch'>
+                                <div class="card-content white-text">
+                                    <span class="card-title">Advanced Search</span>
+                                    <input placeholder="" id="category" type="search" onfocus="this.value=''">
+                                    <span class="card-title">Number of Events Displayed</span>
+                                    <input placeholder="" id="numberSelector" type="number" class="validate" onfocus="this.value=''">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
         </section>
         <div class="push"></div>
     </div>
 
     <footer class="footer-copyright">
         <div class="footer mt-auto py-3">
-            <span class="text-muted">Copyright © 2019 My Events</span>
+            <span class="text-muted">Copyright &#169; 2019 My Events</span>
             <!-- <a class="grey-text text-darken-4 right" href="#!">More Links</a> -->
         </div>
     </footer>

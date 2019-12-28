@@ -139,6 +139,21 @@ a:focus {
 .sidenav{
     text-align: left !important;
 }
+
+.input-field {
+    margin: 0;
+    padding: 0;
+}
+
+#searchInput {
+    margin-bottom: 0;
+    background-color: #666666;
+    padding-left: 20px;
+    margin-right: 20px;
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    border-radius: 5px;
+}
+
 .searchContent {
     padding: 0px 10px 10px 10px;
 }
@@ -250,6 +265,10 @@ hr {
     border-radius: 5px;
     outline: none;
     padding: 0;
+}
+
+.searchBtn {
+    padding: 0 !important;
 }
 
 .savedCityBtn {
@@ -379,7 +398,7 @@ hr {
     }
     
     .carousel {
-        height: 150px !important;
+        height: 200px !important;
     }
 }
 /* These rules take effect when the browser's width */
@@ -410,7 +429,7 @@ hr {
     }
     
     .carousel {
-        height: 250px !important;
+        height: 300px !important;
     }
 }
 /* These rules take effect when the browser's width */
@@ -492,100 +511,3 @@ hr {
 
 /* Extra (xl) large devices (large desktops, 1200px and up) */
 /* @media (min-width: 1200px) { ... } */
- 
-/* index.html styles */
-.navbar-brand {
-    font-family: 'Lilita One', cursive;
-}
-
-/* .footer {
-    background-color: #d9d9d9;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    text-align: center;
-    font-family: 'Varela', sans-serif;
-} */
-
-.right2 {
-    position: absolute;
-    margin-left: 1000px;
-}
-
-.right1 {
-    position: absolute;
-    margin-left: 700px;
-}
-
-.d-block {
-    margin-top: 1rem;
-    height: 500px;
-}
-
-#searchBox {
-    margin-top: 10px !important;
-    margin-left: 0.3rem;
-    margin-right: 1rem;
-}
-
-#eventNo {
-    text-align: left !important;
-}
-
-#currentDate {
-    position: relative;
-    margin-top: -40px;
-    margin-left: 18rem;
-}
-
-.fa-star {
-    color: white;
-}
-
-.eventCard {
-    font-weight: bold;
-}
-
-.savedEvents {
-    margin-bottom: 1rem;
-}
-
-.card-img-top {
-    width: 100%;
-}
-
-@media screen and (max-width: 600px) {
-    #currentTime {
-        font-size: 0.8rem;
-        margin-left: 16rem;;
-    }    
-    .navbar-brand {
-        font-family: 'Fredoka One', cursive;
-        font-size: 2.3rem;
-        margin-left: 40px;
-        color: #7575a3;
-    }
-    .d-block {
-        height: 11.8rem;
-    }
-    #savedEventsDiv {
-        margin-left: 2.5rem;
-        width: 18rem;
-    }
-    .eventBox {
-        margin-right: 0.5rem;
-        margin-left: 0.2rem;
-
-    }
-    .eventsBody {
-        padding-left: 2rem;;
-    }
-    .keyIn {
-        font-family: 'Varela', sans-serif;
-        font-size: 1rem;
-    }
-    .footer {
-        font-size: x-small;
-    }
-    
-}    

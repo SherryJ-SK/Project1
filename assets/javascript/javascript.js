@@ -1,21 +1,10 @@
 
 $(document).ready(function () {
-<<<<<<< HEAD
     $(document).foundation();
     var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
 
     $("#searchBtn").on("click", function () {
         console.log('search buttn clicked');
-=======
-
-    var currentTime = $("#currentTime");
-    currentTime.text(moment().format('lll'));
-
-    var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap" //TicketMaster
-    var checker = false;
-
-    $("#searchbtn").on("click", function () {
->>>>>>> 3b3a0343db5b33ae1ead12be923bb6d6289177f1
         event.preventDefault();
         $(".displayEvents").empty();
         grabResponse();
