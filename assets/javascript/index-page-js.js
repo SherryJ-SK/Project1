@@ -62,7 +62,6 @@ $(document).ready(function() {
             classification = "&classificationName=" + $("#category").val();
         };
         //responsesize, set as default 5 if user input is null
-        console.log($("#numberSelector").val());
         if ($("#numberSelector").val() == "") {
             var responseNumber = "&size=5"; //response size
         } else {
