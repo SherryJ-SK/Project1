@@ -93,6 +93,7 @@ html, body {
 .fa {
     margin-right: 5px;
 }
+
 a {
     font-size: 18px !important;
     /* text-align: center !important; */
@@ -301,6 +302,11 @@ hr {
     border-radius: 5px;
     outline: none;
     padding: 0;
+    padding-left: 5px;
+}
+
+.card-action {
+    padding: 0 !important;
 }
 
 .searchBtn {

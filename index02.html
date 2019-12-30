@@ -11,7 +11,8 @@
     <title>myEvents</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Google font -->
@@ -28,7 +29,7 @@
     <div class='wrapper'>
         <div class="row brandname">
             <div class="col s4">
-                <a class="navbar-brand" href="index03.html">My Events</a>
+                <a class="navbar-brand" href="index02.html">My Events</a>
             </div>
             <div class="col s4">
                 <p id="currentTime"></p>
@@ -51,7 +52,7 @@
         </nav>
 
         <ul class='sidenav' id='mobile-nav'>
-            <li><i class="fa fa-home"></i><a href='#'>Home</a></li>
+            <li><a href='index02.html'>Home</a></li>
             <li><a href='#'>My Favourites</a></li>
         </ul>
 
@@ -73,14 +74,17 @@
                 <form class="col s12" id='searchBox'>
                     <p class="keyIn">Looking for amazing events key in the box!</p>
                     <div class="row">
-                        <div class="input-field col s4">
-                            <input placeholder="" id="searchInput" type="search" class="validate" onfocus="this.value=''">
+                        <div class="input-field col s3">
+                            <input placeholder="" id="searchInput" type="search" class="validate"
+                                onfocus="this.value=''">
                             <!-- <label for="first_name">Search</label> -->
                         </div>
-                        <div class="col s1" id='searchBtn'>
+                        <div class="col s2" id='searchBtn'>
                             <a class="waves-effect waves-light btn"><i class="fa fa-search"></i></a>
                         </div>
-                        <div class="col s1" id='arrowDown'>
+                    </div>
+                    <div class="row">
+                        <div class="col s2" id='arrowDown'>
                             <a class="waves-effect waves-light btn"><i class="fa fa-chevron-down"></i></a>
                         </div>
                     </div>
@@ -92,14 +96,29 @@
                                     <span class="card-title">Category</span>
                                     <input placeholder="" id="category" type="search" onfocus="this.value=''">
                                     <span class="card-title" id='eventNo'>Number of Events Displayed</span>
-                                    <input placeholder="" id="numberSelector" type="number" class="validate" onfocus="this.value=''">
+                                    <input placeholder="" id="numberSelector" type="number" class="validate"
+                                        onfocus="this.value=''">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
-                <div class="card-columns displayEvents">
-
+                <div class="row displayEvents">
+                    <!-- <div class="col s4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                            </div>
+                            <div class="card-content">
+                                <p>I am a very simple card. I am good at containing small bits of information.
+                                    I am convenient because I require little markup to use effectively.</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#">This is a link</a>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
                 <div class="arrange_event" style="display: none">
                     <p>Sumbit your event here</p>
@@ -120,24 +139,24 @@
 
         </section>
         <div class="push"></div>
+    </div>
+
+    <footer class="footer-copyright">
+        <div class="footer mt-auto py-3">
+            <span class="text-muted">Copyright &#169; 2019 My Events</span>
+            <!-- <a class="grey-text text-darken-4 right" href="#!">More Links</a> -->
         </div>
-
-        <footer class="footer-copyright">
-            <div class="footer mt-auto py-3">
-                <span class="text-muted">Copyright &#169; 2019 My Events</span>
-                <!-- <a class="grey-text text-darken-4 right" href="#!">More Links</a> -->
-            </div>
-        </footer>
+    </footer>
 
 
-        <!-- Option footer-copyrighta footer-copyrightl JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap js -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!-- Compressed JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="assets/javascript/moment.min.js"></script>
-        <script src="assets/javascript/javaScript01.js"></script>
-        <script src="assets/javascript/index-page-js.js"></script>
+    <!-- Option footer-copyrighta footer-copyrightl JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compressed JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="assets/javascript/moment.min.js"></script>
+    <script src="assets/javascript/javaScript01.js"></script>
+    <script src="assets/javascript/index-page-js.js"></script>
 
 </body>
 
