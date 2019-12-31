@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="en-us">
 
-</html>
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,8 +9,7 @@
     <title>myEvents</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Google font -->
@@ -26,17 +23,17 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-    <div class='wrapper'>
+    <header>
         <div class="row brandname">
-            <div class="col s4">
+            <div class="col s12 m3 valign center">
                 <a class="navbar-brand" href="index02.html">My Events</a>
             </div>
-            <div class="col s4">
+            <div class="col s12 m6 center">
                 <p id="currentTime"></p>
             </div>
         </div>
         <nav>
-            <div class='nav-wrapper'>
+            <div class='nav-wrapper z-depth-3'>
                 <!-- <h2 class="brand-logo right">My Events</h2> -->
 
                 <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
@@ -44,9 +41,14 @@
                 </a>
 
                 <ul class="left hide-on-med-and-down" id='nav-mobile'>
-                    <li class='active nav-item'>
-                        </i><a href='#'><i class="fa fa-home"></i>Home</a></li>
-                    <li class='nav-item'><a href='#'>My Favourites</a></li>
+                    <li class='home nav-item'>
+                        <a href='#'><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a href='#'>
+                        My Favourites
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -55,8 +57,10 @@
             <li><a href='index02.html'>Home</a></li>
             <li><a href='#'>My Favourites</a></li>
         </ul>
+    </header>
 
-        <section id="mainContent" class="flex-shrink-0">
+    <main>
+        <section id="mainContent">
             <div class='container'>
                 <div class='row'>
                     <div class='carousel carousel-slider col s12'>
@@ -72,11 +76,12 @@
                 </div>
 
                 <form class="col s12" id='searchBox'>
-                    <p class="keyIn">Looking for amazing events key in the box!</p>
                     <div class="row">
-                        <div class="input-field col s3">
-                            <input placeholder="" id="searchInput" type="search" class="validate"
-                                onfocus="this.value=''">
+                        <p class="keyIn col s12 m10">Looking for amazing events key in the box!</p>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s8 m5">
+                            <input placeholder="Events near me" id="searchInput" type="search" class="validate" onfocus="this.value=''">
                             <!-- <label for="first_name">Search</label> -->
                         </div>
                         <div class="col s2" id='searchBtn'>
@@ -89,36 +94,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s12 m6">
                             <div class="card blue-grey darken-1" id='advanceSearch' hidden>
                                 <div class="card-content white-text">
-                                    <h3 class='cardHeader'>Advance Search</h3>
-                                    <span class="card-title">Category</span>
+                                    <h5 class='cardHeader'>Advance Search</h5>
+                                    <h6 class=" blue-grey-text text-lighten-5">Category</h6>
                                     <input placeholder="" id="category" type="search" onfocus="this.value=''">
-                                    <span class="card-title" id='eventNo'>Number of Events Displayed</span>
-                                    <input placeholder="" id="numberSelector" type="number" class="validate"
-                                        onfocus="this.value=''">
+                                    <h6 class=" blue-grey-text text-lighten-5" id='eventNo'>Number of Events Displayed</h6>
+                                    <input placeholder="" id="numberSelector" type="number" class="validate" onfocus="this.value=''">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
                 <div class="row displayEvents">
-                    <!-- <div class="col s4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                            </div>
-                            <div class="card-content">
-                                <p>I am a very simple card. I am good at containing small bits of information.
-                                    I am convenient because I require little markup to use effectively.</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#">This is a link</a>
-                            </div>
-                        </div>
-                    </div> -->
+                    <!-- display response here -->
                 </div>
                 <div class="arrange_event" style="display: none">
                     <p>Sumbit your event here</p>
@@ -138,15 +128,18 @@
                 </div>
 
         </section>
-        <div class="push"></div>
-    </div>
+        <!-- <div class="push"></div> -->
+    </main>
 
-    <footer class="footer-copyright">
-        <div class="footer mt-auto py-3">
-            <span class="text-muted">Copyright &#169; 2019 My Events</span>
-            <!-- <a class="grey-text text-darken-4 right" href="#!">More Links</a> -->
+    <footer class="page-footer">
+        <div class="footer-copyright center valign">
+            <div class="container">
+                Copyright &#169; 2019 My Events
+                <!-- <a class="grey-text text-darken-4 right" href="#!">More Links</a> -->
+            </div>
         </div>
     </footer>
+
 
 
     <!-- Option footer-copyrighta footer-copyrightl JavaScript -->

@@ -5,7 +5,7 @@ $(document).ready(function() {
     // TicketMaster
     // var apiKey = "prBtwnYW6qBfgHYfb8kiUfLXT4bAjXap"
     // backup
-    var apiKey = "93sIViJs6exJuIwcNtKqMSGIAdp1eJV9" 
+    var apiKey = "93sIViJs6exJuIwcNtKqMSGIAdp1eJV9"
     var checker = false;
     var deviceLat = "";
     var deviceLon = "";
@@ -64,7 +64,7 @@ $(document).ready(function() {
         };
         // responsesize, set as default 5 if user input is null
         if ($("#numberSelector").val() == "") {
-            var responseNumber = "&size=5"; //response size
+            var responseNumber = "&size=20"; //response size
         } else {
             responseNumber = "&size=" + $("#numberSelector").val();
         };
@@ -80,18 +80,18 @@ $(document).ready(function() {
         console.log(responseNumber);
         console.log(geoSearch);
 
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + responseNumber + classification + "&apikey=" + apiKey;
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchInput + responseNumber + geoSearch + classification + "&apikey=" + apiKey;
         console.log(queryURL);
         // parse response from ticketmaster and enter displayEvent function
         $.ajax({
-            type:'GET',
+            type: 'GET',
             url: queryURL,
-            dataType:'JSON',
+            dataType: 'JSON',
             success: function(response) {
                 console.log(response);
                 displayEvents(response);
             },
-            error: function(){
+            error: function() {
                 alert("Error, 404 (not found)!")
             }
         });
@@ -127,8 +127,7 @@ $(document).ready(function() {
         console.log(eventExist);
         if (eventExist == null) {
             alert('Error, no response received!')
-        }
-        else {
+        } else {
             for (var i = 0; i < arrayLength; i++) {
                 // parse from json for the needed data
                 var eventEl = response._embedded.events[i];
@@ -142,27 +141,27 @@ $(document).ready(function() {
                 var eventId = eventEl.id;
                 // display in display area using card 
                 var displayBoxEl = $('.displayEvents');
-                var cardContainerEl = $('<div>').addClass('col s4');
+                var cardContainerEl = $('<div>').addClass('card-content col s12 m4 hoverable');
                 var cardDivEl = $('<div>').addClass('card saveEventDiv');
                 var imageDivEl = $('<div>').addClass('card-image');
                 var imageEl = $('<img>');
-                var cardLinkEl = $('<a>').addClass('card-action links card-title');
+                var cardLinkEl = $('<a>').addClass('links card-title');
                 var cardContentEl = $('<div>').addClass('card-content');
-                var eventTimeEl = $('<p>').addClass('card-text time'); 
-                var eventDateEl = $('<p>').addClass('card-text date');
-                var saveEventBtnEl = $('<a>').addClass('waves-effect waves-light btn saveEvent');
+                var eventTimeEl = $('<p>').addClass('time');
+                var eventDateEl = $('<p>').addClass('date');
+                var saveEventBtnEl = $('<a>').addClass('waves-effect waves-light btn-floating saveEvent halfway-fab');
                 var saveSymbolEl = $('<i>').addClass('fa fa-star');
-                
+
                 imageEl.attr('src', eventImg);
-                imageEl.attr('alt',eventHeader);
+                imageEl.attr('alt', eventHeader);
                 imageEl.css('width', '100%');
                 cardLinkEl.attr('href', eventLink);
                 cardLinkEl.attr('id', eventHeader);
-                cardLinkEl.html('<h5>' + eventHeader + '</h5>');
+                cardLinkEl.html('<h6>' + eventHeader + '</h6>');
                 eventTimeEl.html('<p>' + newTime + '</p>');
                 eventDateEl.html('<p>' + newDate + '</p>');
-                saveEventBtnEl.attr('id', eventId);     
-    
+                saveEventBtnEl.attr('id', eventId);
+
                 // var cardContainer = $("<div class=\"card mt-2 saveEventDiv\" style=\"width: 18rem;\"</div>");
                 // cardContainer.append("<img src=" + eventImg + " class=\"card-img-top\" alt=" + eventHeader + "></img>");
                 // var cardBody = $("<div class=\"card-body\">");
@@ -172,23 +171,25 @@ $(document).ready(function() {
                 // cardBody.append("<p class=\"card-text time\">" + newTime + "</p>");
                 // cardBody.append("<p class=\"card-text date\">" + newDate + "</p>");
                 // cardBody.append("<button class=\"btn btn-primary saveEvent\" id=" + eventId + "><i class=\"fa fa-star\"></i></button>");
-                
+
                 // id saveEvent for like buttons
-                
+
                 displayBoxEl.append(cardContainerEl);
                 cardContainerEl.append(cardDivEl);
                 cardDivEl.append(imageDivEl);
                 imageDivEl.append(imageEl);
-                cardDivEl.append(cardLinkEl);
+                imageDivEl.append(saveEventBtnEl);
+                saveEventBtnEl.append(saveSymbolEl);
                 cardDivEl.append(cardContentEl);
+
+                cardContentEl.append(cardLinkEl);
                 cardContentEl.append(eventTimeEl);
                 cardContentEl.append(eventDateEl);
-                cardDivEl.append(saveEventBtnEl);
-                saveEventBtnEl.append(saveSymbolEl);
-    
+
+
                 var savedNameString = localStorage.getItem("events");
                 savedNameJSON = JSON.parse(savedNameString) || [];
-    
+
                 var newInput = [{
                     "eventId": eventId,
                     "eventName": eventHeader,
@@ -197,18 +198,18 @@ $(document).ready(function() {
                     "eventImg": eventImg,
                     "eventLink": eventLink
                 }];
-    
+
                 savedNameJSON.push(newInput);
                 localStorage.setItem("events", JSON.stringify(savedNameJSON));
             };
         }
     };
-    
+
     function eventDisplayNumber() {
         // if there is no value in the 'number of events displayed' inputBox, then
         // array size will be 5 elements
         if ($("#numberSelector").val() == "") {
-            var displayNumber = 5;
+            var displayNumber = 20;
         }
         // if the above condition is not met, then the array size will be equivalent
         // to the number input by the user
