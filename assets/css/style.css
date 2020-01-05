@@ -175,7 +175,6 @@ main {
     flex: 1 0 auto;
 }
 
-
 /* to this comment*/
 
 .push {
@@ -206,6 +205,7 @@ main {
     outline: none;
     padding: 0;
     padding-left: 5px;
+    margin-bottom: 10px;
 }
 
 .card-action {
