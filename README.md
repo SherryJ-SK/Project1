@@ -1,8 +1,9 @@
 # Project1
 
-Summary
+## Summary
 
-The web application is an Event search engine that enables the user to
+The web application is an Event search engine that enables the user to search events by catogories and store
+the selected events in the favourite page which allow user to manage them easily.  
 
 The application uses 'addEventListener' so that when one of the buttons is clicked on, it will initiate
 the associated function. The use of 'preventDefault' and 'stopPropagation' methods are used to prevent
@@ -38,16 +39,16 @@ in an html file:
 - Moment.js
 - Interval
 
-Getting Started
+## Getting Started
 
 This documentation will assist you in viewing this project. To view the project either open
 the url of the deployed application with the following address in any browser:
 
-https://pozengineer.github.io/weatherDashboard/
+https://sherryj-sk.github.io/Project1/
 
 Download and clone the repository from GitHub using the following command:
 
-git clone https://github.com/pozengineer/weatherDashboard.git
+git clone https://github.com/SherryJ-SK/Project1.git
 
 The following files are used to create the application:
 - index.html
@@ -55,6 +56,7 @@ The following files are used to create the application:
 - style01.css
 - javaScript01.js
 - moment.min.js
+
 There are additional files that should be disregarded. They were used as the initial building
 blocks for the application but want to keep them for future reference.
 

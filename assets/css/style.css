@@ -15,7 +15,7 @@
 }
 
 .nav-wrapper {
-    background-color: #1349BD;
+    background-color: #cccccc;
 }
 
 .brand-logo {
@@ -31,10 +31,11 @@
 .navbar-brand {
     font-family: 'Fredoka One', cursive;
     font-size: 30px !important;
-    color: #7e57c2;
+    color: #7575a3;
 }
 
 #currentTime {
+    font-size: medium;
     color: #999999;
     font-family: 'Varela', sans-serif;
     padding: 1rem 0;
@@ -63,8 +64,8 @@
 }
 
 .nav-item {
-    background-color: #1349BD;
-    font-family: "Georgia", "Times New Roman", Times, serif;
+    background-color: #cccccc;
+    font-family: 'Varela', sans-serif;
     text-align: center;
     width: 150px !important;
 }
@@ -89,7 +90,7 @@ a h6:hover {
 }
 
 .home {
-    background-color: #7e57c2 !important;
+    background-color: #cccccc !important;
     text-decoration: none;
     width: 100px;
 }
@@ -139,7 +140,7 @@ main {
 }
 
 .cardHeader {
-    font-family: "Georgia", "Times New Roman", Times, serif;
+    font-family: 'Varela', sans-serif;
 }
 
 .searchContent {
@@ -175,6 +176,9 @@ main {
     flex: 1 0 auto;
 }
 
+.container {
+    font-family: 'Varela', sans-serif;
+}
 
 /* to this comment*/
 
@@ -183,10 +187,7 @@ main {
 }
 
 .page-footer {
-    background-color: #3D3935;
-    border-top: solid;
-    border-width: 5px;
-    border-color: #666666;
+    background-color: #cccccc;
     padding-bottom: 1rem;
     height: 5rem;
 }
