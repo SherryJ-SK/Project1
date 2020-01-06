@@ -207,6 +207,7 @@ main {
     outline: none;
     padding: 0;
     padding-left: 5px;
+    margin-bottom: 10px;
 }
 
 .card-action {

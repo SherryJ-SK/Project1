@@ -128,7 +128,9 @@ $(document).ready(function() {
         if (eventExist == null) {
             alert('Error, no response received!')
         } else {
-            for (var i = 0; i < arrayLength; i++) {
+            var eventArray = response._embedded.events.length;
+            console.log(eventArray);
+            for (var i = 0; i < eventArray; i++) {
                 // parse from json for the needed data
                 var eventEl = response._embedded.events[i];
                 var eventDate = eventEl.dates.start.localDate;
@@ -141,7 +143,7 @@ $(document).ready(function() {
                 var eventId = eventEl.id;
                 // display in display area using card 
                 var displayBoxEl = $('.displayEvents');
-                var cardContainerEl = $('<div>').addClass('card-content col s12 m4 hoverable');
+                var cardContainerEl = $('<div>').addClass('card-content col s12 m3 l4 hoverable');
                 var cardDivEl = $('<div>').addClass('card saveEventDiv');
                 var imageDivEl = $('<div>').addClass('card-image');
                 var imageEl = $('<img>');
