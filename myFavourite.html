@@ -24,7 +24,7 @@
 <body class="d-flex flex-column h-100">
     <header>
         <div class="row brandname">
-            <div class="col s12 m4 l3valign center">
+            <div class="col s12 m4 l3 valign center">
                 <a class="navbar-brand" href="index02.html">My Events</a>
             </div>
             <div class="col s12 m6 l4 center">
@@ -43,10 +43,8 @@
                     <li class='home nav-item'>
                         <a href='index02.html'><i class="fa fa-home"></i>Home</a>
                     </li>
-                    <li class='nav-item'>
-                        <a href='myFavourite.html'>
-                        My Favourites
-                        </a>
+                    <li class='nav-item active'>
+                        <a href='myFavourite.html'>My Favourites</a>
                     </li>
                 </ul>
             </div>
@@ -74,17 +72,18 @@
 
                 </div>
 
-                <div class="row my-2 eventBox">
-                    <div class="col s12 m12 l12 mx-auto mb-5 border rounded mt-2">
-                        <h3 class="text-center">
-                            <i class="fa fa-bookmark"></i>
-                            My Favourite Events</h3>
-                        <hr>
-                        <div id="savedEventsDiv">
-            
+                <div class='row eventBox'>
+                    <div class='row'>
+                        <div class='col s12 m12 l12 favHeader'>
+                            <h3 class='text-center'><i class='fa fa-bookmark'></i>My Favourite Events</h3>
+                            <hr>    
                         </div>
                     </div>
+                    <div id='savedEventDiv'>
+            
+                    </div>
                 </div>
+                
                 
                 <div class="arrange_event" style="display: none">
                     <p>Sumbit your event here</p>

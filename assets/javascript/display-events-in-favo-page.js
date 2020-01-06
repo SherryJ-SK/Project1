@@ -18,50 +18,57 @@ $(document).ready(function() {
                 var eventLink = savedEventJSON[j][0].eventLink;
                 var eventId = savedEventJSON[j][0].eventId;
                 var daysLeft = Math.abs(moment().diff(eventDate, "days"));
-                var savedEventDiv = $("#savedEventsDiv"); // inside div under title
-                var eventTitle = $("<div class=\"card-header\">");
-                var realTitle = eventTitle.text(eventHeader);
-                var savedEvent = $("<div class=\"card savedEvents\" style=\"width: 100%\">"); //create new div
-                var newImage = $("<img src=" + eventImg + " class=\"card-img-top col-md-4\"  alt=" + eventHeader + "></img>");
 
-                savedEvent.append(realTitle);
+                var savedEventDivEl = $('#savedEventDiv');
+                var savedEventEl = $('<div>').addClass('row savedEvents');
+                var eventTitleEl = $('<div>').addClass('card-header col s12 m12 l12 hoverable ');
+                var secondRowDivEl = $('<div>').addClass('row secondRow');
+                var newImageDivEl = $('<div>').addClass('card-image col s12 m5 l5');
+                var newImageEl = $('<img>');
+                var eventBodyEl = $('<div>').addClass('eventBody col s12 m5 l5');
+                var eventDateEl = $('<p>').addClass('card-text eventCard pt-3');
+                var eventTimeEl = $('<p>').addClass('card-text eventCard');
+                var timeLeftEl = $('<p>').addClass('card-text eventCard');
+                var eventLinkEl = $('<a>').addClass('card-title');
+                var deleteEventBtnEl = $('<a>').addClass('waves-effect waves-light btn deleteBtn col s2 m2 l2');
+                var deleteSymbolEl = $('<i>').addClass('fa fa-trash');
 
-                var divImg = $("<div class=\"row\">");
-                divImg.append(newImage);
+                eventTitleEl.text(eventHeader);
+                eventTitleEl.css({'width': '100%', 'border-bottom': '1px solid', 'border-color': '#666666'});
+                savedEventEl.css({'width': '100%', 'border': '1px solid', 'border-color': '#666666'});
+                newImageEl.attr('src', eventImg);
+                newImageEl.attr('alt', eventHeader);
+                newImageEl.css('width', '100%');
+                eventDateEl.html('<p>Date: ' + newDate + '</p>');
+                eventTimeEl.html('<p>Time: ' + newTime + '</p>');
+                timeLeftEl.html('<p>' + daysLeft + ' Days left</p>');
+                eventLinkEl.attr('href', eventLink);
+                eventLinkEl.html('<p>More information</p>');
+                deleteEventBtnEl.attr('id', eventId);
+                secondRowDivEl.css('margin-bottom', '0');
 
-                var eventLink = $("<a href=" + eventLink + ">");
-                var eventBody = $("<div class=\"eventsBody col-md-6\">");
+                savedEventDivEl.append(savedEventEl);
+                savedEventEl.append(eventTitleEl);
+                savedEventEl.append(secondRowDivEl);
+                secondRowDivEl.append(newImageDivEl);
+                secondRowDivEl.append(eventBodyEl);
+                secondRowDivEl.append(deleteEventBtnEl);
+                newImageDivEl.append(newImageEl);
+                eventBodyEl.append(eventDateEl);
+                eventBodyEl.append(eventTimeEl);
+                eventBodyEl.append(timeLeftEl);
+                eventBodyEl.append(eventLinkEl);
+                deleteEventBtnEl.append(deleteSymbolEl);
 
-                eventBody.append("<p class=\"card-text eventCard pt-3\">" + " Date: " + newDate + "</p>");
-                eventBody.append("<p class=\"card-text eventCard\">" + " Time: " + newTime + "</p>");
-                eventBody.append("<p class=\"card-text eventCard\">" + daysLeft + " Days left</p>");
-                eventLink.append("<p class=\"card-title\">" + "More information" + "</p>");
-
-                var deleteDiv = $("<div>").addClass('deleteBtn col-md-2');
-                var deleteBtn = $("<button>").addClass('btn btn-light deleteBtn fa fa-trash-o');
-                deleteBtn.attr('id', eventId);
-
-                eventBody.append(eventLink);
-                divImg.append(eventBody);
-
-                deleteDiv.append(deleteBtn);
-                divImg.append(deleteDiv);
-
-                savedEvent.append(divImg);
-                savedEventDiv.append(savedEvent);
-
-                $("button").on("click", function() {
+                $('.deleteBtn').on("click", function() {
                     removeEvent()
                 });
-
             }
-
         };
-
     };
     savedEvents();
 
-    //remove button
+    // remove button
     function removeEvent() {
         var eventId = event.target.id;
 

@@ -34,6 +34,10 @@
     color: #7575a3;
 }
 
+.navbar-brand:hover {
+    color: #5c5c8a;
+}
+
 #currentTime {
     font-size: medium;
     color: #999999;
@@ -78,9 +82,9 @@
     color: #ffffff !important;
 }
 
-a h6:hover {
+h6:hover {
     text-decoration: none;
-    color: #1565c0;
+    color: #7575a3 !important;
 }
 
 .nav-item:hover {
@@ -163,7 +167,6 @@ p {
     color: #616161;
 }
 
-
 /* !!esssential for sticky footer!! from this comment*/
 
 body {
@@ -208,6 +211,53 @@ main {
     padding: 0;
     padding-left: 5px;
     margin-bottom: 10px;
+}
+
+.deleteBtn {
+    width: 50px !important;
+    margin: 10px 0px;
+}
+
+.eventBox {
+    border: 1px solid;
+    border-color: #333333;
+    border-radius: 5px;
+    padding: 0px 25px;
+}
+
+.favHeader {
+    padding: 0 !important;
+}
+
+.text-center {
+    font-family: 'Sanchez', serif;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.fa-bookmark {
+    color: #990033;
+    margin-right: 15px;
+}
+
+.fa-trash {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.fa-align-justify {
+    color: #595959;
+}
+
+.eventCard {
+    font-weight: bold;
+    margin: 10px 5px;
+}
+
+.card-image {
+    width: 100%;
+    margin: 0;
+    padding: 0 !important;
 }
 
 .card-action {
