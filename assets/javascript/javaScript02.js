@@ -1,13 +1,6 @@
 $(document).ready(function () {
-
-    // $('.carousel').carousel({
-    //     indicators: true
-    // });
-
-    // setInterval(function(){
-    //     $('.carousel').carousel('next');
-    // }, 2000);
-
+    $('.sidenav').sidenav();
+    
     var currentTime = $("#currentTime");
     currentTime.text(moment().format('lll'));
     // TicketMaster
@@ -95,14 +88,14 @@ $(document).ready(function () {
         else {
             var eventArray = response._embedded.events.length;
             console.log(eventArray);
-            for (var i = 0; i < eventArray; i++) {
+            for (var i = 0; i < 20; i++) {
                 // parse from json for the needed data
-                var eventEl = response._embedded.events[i];
+                var eventEl = response._embedded.events[i*5];
                 var eventDate = eventEl.dates.start.localDate;
                 var newDate = moment(eventDate).format("MMMM Do YYYY");
                 var eventTime = eventEl.dates.start.localTime;
                 var newTime = moment(eventTime, "HH:mm:ss").format("h:mm a");
-                var eventImg = eventEl.images[0].url;
+                var eventImg = eventEl.images[1].url;
                 var eventHeader = eventEl.name;
                 var eventLink = eventEl.url;
                 var eventId = eventEl.id;
@@ -143,7 +136,7 @@ $(document).ready(function () {
             
                 setInterval(function(){
                     $('.carousel').carousel('next');
-                }, 1000);
+                }, 2000);
             };
         }
     }
