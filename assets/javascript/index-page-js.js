@@ -151,7 +151,7 @@ $(document).ready(function() {
                 var cardContentEl = $('<div>').addClass('card-content');
                 var eventTimeEl = $('<p>').addClass('time');
                 var eventDateEl = $('<p>').addClass('date');
-                var saveEventBtnEl = $('<a>').addClass('waves-effect waves-light btn-floating saveEvent halfway-fab');
+                var saveEventBtnEl = $('<a>').addClass('waves-effect waves-orange btn-floating saveEvent halfway-fab');
                 var saveSymbolEl = $('<i>').addClass('fa fa-star');
 
                 imageEl.attr('src', eventImg);
