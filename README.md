@@ -1,20 +1,20 @@
 # Project 1
 
-![projectImage](assets/images/projectImage.jpg)
+![Project Image](assets/images/projectImage.jpg)
 
 >Event searching and saving web application.
 
----
+
 
 ### Table of content
 
--[Description](##Description)
--[How to Use](##How-to-Use)
--[Technologies](##Technologies)
--[Directions for Future Development](##Directions-for-Future-Development)
--[Author Info](##Author-Info)
+- [Description](##Description)
+- [How to Use](##How-to-Use)
+- [Technologies](##Technologies)
+- [Directions for Future Development](##Directions-for-Future-Development)
+- [Author Info](##Author-Info)
 
----
+
 
 ## Description
 
@@ -24,7 +24,7 @@ This application is developed under the concept of responsive design.
 
 [Back to the top](#Project-1)
 
----
+
 
 ## How to Use
 
@@ -52,7 +52,7 @@ Other files contained in the History folder are out of date versions and demo fo
 
 [Back to the top](#Project-1)
 
----
+
 
 ## Technologies
 - HTML
@@ -66,7 +66,7 @@ Other files contained in the History folder are out of date versions and demo fo
 
 [Back to the top](#Project-1)
 
----
+
 
 ## Directions for Future Development
 
@@ -79,7 +79,7 @@ There are still small problems need to be adjusted to fit user habit, but time i
 
 [Back to the top](#Project-1)
 
----
+
 
 ## Author Info
 
