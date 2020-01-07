@@ -160,9 +160,16 @@ main {
     resize: none;
 }
 
+.keyIn {
+    font-family: 'Varela', sans-serif;
+    font-size: 1.5rem;
+    line-height: 100%;
+    color: #616161;
+}
+
 p {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 20px;
+    font-family: 'Varela', sans-serif;
+    font-size: 1.1rem;
     line-height: 100%;
     color: #616161;
 }
@@ -211,6 +218,10 @@ main {
     padding: 0;
     padding-left: 5px;
     margin-bottom: 10px;
+}
+
+.btn-floating {
+    background-color: #ffe066;
 }
 
 .deleteBtn {

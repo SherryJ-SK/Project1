@@ -143,7 +143,7 @@ $(document).ready(function() {
                 var eventId = eventEl.id;
                 // display in display area using card 
                 var displayBoxEl = $('.displayEvents');
-                var cardContainerEl = $('<div>').addClass('card-content col s12 m3 l4 hoverable');
+                var cardContainerEl = $('<div>').addClass('card-content col s12 m4 l3 hoverable');
                 var cardDivEl = $('<div>').addClass('card saveEventDiv');
                 var imageDivEl = $('<div>').addClass('card-image');
                 var imageEl = $('<img>');
@@ -151,7 +151,7 @@ $(document).ready(function() {
                 var cardContentEl = $('<div>').addClass('card-content');
                 var eventTimeEl = $('<p>').addClass('time');
                 var eventDateEl = $('<p>').addClass('date');
-                var saveEventBtnEl = $('<a>').addClass('waves-effect waves-light btn-floating saveEvent halfway-fab');
+                var saveEventBtnEl = $('<a>').addClass('waves-effect waves-orange btn-floating saveEvent halfway-fab');
                 var saveSymbolEl = $('<i>').addClass('fa fa-star');
 
                 imageEl.attr('src', eventImg);
