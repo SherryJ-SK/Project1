@@ -264,6 +264,14 @@ main {
     padding: 0 !important;
 }
 
+.card-header {
+    font-size: 18px;
+}
+
+.card-title {
+    font-size: 18px !important;
+}
+
 #searchBtn {
     margin: 0 1rem;
 }
@@ -346,7 +354,6 @@ main {
     padding-top: 15px;
     text-align: left;
 }
-
 
 /* These rules take effect when the browser's width */
 

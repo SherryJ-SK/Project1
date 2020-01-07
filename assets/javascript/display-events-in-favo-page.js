@@ -34,7 +34,7 @@ $(document).ready(function() {
                 var deleteSymbolEl = $('<i>').addClass('fa fa-trash');
 
                 eventTitleEl.text(eventHeader);
-                eventTitleEl.css({'width': '100%', 'border-bottom': '1px solid', 'border-color': '#666666'});
+                eventTitleEl.css({'width': '100%', 'border-bottom': '1px solid', 'border-color': '#666666', 'padding': '10px 10px', 'background-color': '#cccccc'});
                 savedEventEl.css({'width': '100%', 'border': '1px solid', 'border-color': '#666666'});
                 newImageEl.attr('src', eventImg);
                 newImageEl.attr('alt', eventHeader);

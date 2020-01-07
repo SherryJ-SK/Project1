@@ -88,7 +88,7 @@ $(document).ready(function () {
         else {
             var eventArray = response._embedded.events.length;
             console.log(eventArray);
-            for (var i = 0; i < 20; i++) {
+            for (var i = 0; i < eventArray/5; i++) {
                 // parse from json for the needed data
                 var eventEl = response._embedded.events[i*5];
                 var eventDate = eventEl.dates.start.localDate;
@@ -103,32 +103,35 @@ $(document).ready(function () {
                 var carouselDisplayEl = $('.carousel');
                 var carouselContainerEl = $('<a>').addClass('carousel-item');
                 // var cardDivEl = $('<div>').addClass('card saveEventDiv');
-                var imageDivEl = $('<div>').addClass('card-image');
+                // var imageDivEl = $('<div>').addClass('card-image');
                 var imageEl = $('<img>');
-                var eventLinkEl = $('<a>').addClass('links card-title');
+                var eventLinkEl = $('<a>').addClass('links card-title col s12 m12 l12');
                 // var cardContentEl = $('<div>').addClass('card-content');
-                var eventTimeEl = $('<p>').addClass('time');
-                var eventDateEl = $('<p>').addClass('date');
+                var eventTimeEl = $('<p>').addClass('time col s12 m12 l12');
+                var eventDateEl = $('<p>').addClass('date col s12 m12 l12');
                 // var saveEventBtnEl = $('<a>').addClass('waves-effect waves-light btn-floating saveEvent halfway-fab');
                 // var saveSymbolEl = $('<i>').addClass('fa fa-star');
 
                 carouselContainerEl.attr('href', '#'+ i +'!' );
                 imageEl.attr('src', eventImg);
-                imageEl.attr('alt', '');
+                imageEl.attr('alt', eventHeader);
                 imageEl.css('width', '100%');
                 eventLinkEl.attr('href', eventLink);
                 eventLinkEl.attr('id', eventHeader);
                 eventLinkEl.html('<h6>' + eventHeader + '</h6>');
                 eventTimeEl.html('<p>' + newTime + '</p>');
                 eventDateEl.html('<p>' + newDate + '</p>');
+                eventLinkEl.css({'position': 'absolute', 'top': '0', 'left': '10px', 'color': '#ffffff'});
+                eventTimeEl.css({'position': 'absolute', 'top': '60px', 'left': '10px'});
+                eventDateEl.css({'position': 'absolute', 'top': '80px', 'left': '10px'});
                 // saveEventBtnEl.attr('id', eventId);
 
                 carouselDisplayEl.append(carouselContainerEl);
-                carouselContainerEl.append(imageDivEl);
-                imageDivEl.append(imageEl);
-                imageDivEl.append(eventLinkEl);
-                imageDivEl.append(eventTimeEl);
-                imageDivEl.append(eventDateEl);
+                carouselContainerEl.append(imageEl);
+                // imageDivEl.append(imageEl);
+                carouselContainerEl.append(eventLinkEl);
+                carouselContainerEl.append(eventTimeEl);
+                carouselContainerEl.append(eventDateEl);
 
                 $('.carousel').carousel({
                     indicators: false
