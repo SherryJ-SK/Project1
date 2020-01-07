@@ -137,7 +137,7 @@ $(document).ready(function() {
                 var newDate = moment(eventDate).format("MMMM Do YYYY");
                 var eventTime = eventEl.dates.start.localTime;
                 var newTime = moment(eventTime, "HH:mm:ss").format("h:mm a");
-                var eventImg = eventEl.images[0].url;
+                var eventImg = eventEl.images[1].url;
                 var eventHeader = eventEl.name;
                 var eventLink = eventEl.url;
                 var eventId = eventEl.id;
