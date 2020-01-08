@@ -4,6 +4,7 @@ $(document).ready(function() {
     currentTime.text(moment().format('lll'));
 
     function savedEvents() {
+        $("#savedEventDiv").empty();
         var savedEventString = localStorage.getItem("selected");
         savedEventJSON = JSON.parse(savedEventString);
         if (savedEventJSON !== null) {
@@ -34,8 +35,8 @@ $(document).ready(function() {
                 var deleteSymbolEl = $('<i>').addClass('fa fa-trash');
 
                 eventTitleEl.text(eventHeader);
-                eventTitleEl.css({'width': '100%', 'border-bottom': '1px solid', 'border-color': '#666666', 'padding': '10px 10px', 'background-color': '#cccccc'});
-                savedEventEl.css({'width': '100%', 'border': '1px solid', 'border-color': '#666666'});
+                eventTitleEl.css({ 'width': '100%', 'border-bottom': '1px solid', 'border-color': '#666666', 'padding': '10px 10px', 'background-color': '#cccccc' });
+                savedEventEl.css({ 'width': '100%', 'border': '1px solid', 'border-color': '#666666' });
                 newImageEl.attr('src', eventImg);
                 newImageEl.attr('alt', eventHeader);
                 newImageEl.css('width', '100%');
@@ -60,35 +61,36 @@ $(document).ready(function() {
                 eventBodyEl.append(eventLinkEl);
                 deleteEventBtnEl.append(deleteSymbolEl);
 
-                $('.deleteBtn').on("click", function() {
-                    removeEvent()
-                });
             }
         };
+        $(".deleteBtn").on("click", function() {
+            console.log("clicked");
+            var targetId = $(this).attr("id");
+            removeEvent(targetId);
+        });
     };
+
     savedEvents();
 
     // remove button
-    function removeEvent() {
-        var eventId = event.target.id;
+    function removeEvent(targetId) {
+        // var targetId = $(this).attr("id");
 
         var savedEventString = localStorage.getItem("selected");
-        savedEventJSON = JSON.parse(savedEventString);
+        var savedEventJSON = JSON.parse(savedEventString);
 
-        console.log(eventId);
+        console.log(targetId);
+        for (var x = 0; x < savedEventJSON.length; x++) {
 
-        if (savedEventJSON !== null) {
-            for (var x = 0; x < savedEventJSON.length; x++) {
+            if (targetId === savedEventJSON[x][0].eventId) {
+                console.log(x);
+                savedEventJSON.splice(x, 1);
+                localStorage.setItem('selected', JSON.stringify(savedEventJSON));
 
-                if (eventId == savedEventJSON[x][0].eventId) {
-                    console.log(x);
-                    // alert("If event has been deleted, you will need to add it again. Are you sure you want to do that?");
-                    savedEventJSON.splice(x, 1);
-                    localStorage.setItem('selected', JSON.stringify(savedEventJSON));
-                    window.location.reload();
-                }
+                savedEvents();
             }
         }
+
     };
 
 });

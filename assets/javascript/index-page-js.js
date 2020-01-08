@@ -143,7 +143,7 @@ $(document).ready(function() {
                 var eventId = eventEl.id;
                 // display in display area using card 
                 var displayBoxEl = $('.displayEvents');
-                var cardContainerEl = $('<div>').addClass('card-content col s12 m4 l3 hoverable');
+                var cardContainerEl = $('<div>').addClass('card-content col s12 m4 hoverable');
                 var cardDivEl = $('<div>').addClass('card medium saveEventDiv');
                 var imageDivEl = $('<div>').addClass('card-image');
                 var imageEl = $('<img>');

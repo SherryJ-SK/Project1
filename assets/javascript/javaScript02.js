@@ -23,9 +23,11 @@ $(document).ready(function() {
         function geoSucc(position) {
             deviceLat = position.coords.latitude;
             deviceLon = position.coords.longitude;
+            grabResponse();
         };
 
         function showError(error) {
+            grabResponse();
             switch (error.code) {
                 case error.PERMISSION_DENIED:
                     // "User denied the request for Geolocation."
@@ -43,10 +45,9 @@ $(document).ready(function() {
         }
 
     }
-    grabResponse()
-        // parse search result from API
+
+    // parse search result from API
     function grabResponse() {
-        console.log("inside geores");
         // country set as AU changed by using geolocation
         // var country = "&countryCode=AU";
 
@@ -58,17 +59,14 @@ $(document).ready(function() {
             var geoSearch = "&latlong=" + deviceLat + "," + deviceLon;
         };
         // API from ticketmaster
-        console.log(geoSearch);
 
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + geoSearch + responseNumber + "&apikey=" + apiKey;
-        console.log(queryURL);
         // parse response from ticketmaster and enter displayEvent function
         $.ajax({
             type: 'GET',
             url: queryURL,
             dataType: 'JSON',
             success: function(response) {
-                console.log(response);
                 displayUpcomingEvents(response);
             },
             error: function() {
@@ -79,10 +77,8 @@ $(document).ready(function() {
 
     // display search response for home page
     function displayUpcomingEvents(response) {
-        console.log(response);
         //loop through search response to display them
         var eventArray = response._embedded.events.length;
-        console.log(eventArray);
         for (var i = 0; i < eventArray / 5; i++) {
             // parse from json for the needed data
             var eventEl = response._embedded.events[i * 5];
