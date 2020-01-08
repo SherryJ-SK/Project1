@@ -1,6 +1,6 @@
 # Project 1
 
-![Project Image](assets/images/projectImage.jpg)
+![Project Image](assets/images/projectImage.png)
 
 >Event searching and saving web application.
 
@@ -33,11 +33,11 @@ or open the URL of the deployed application with the following address in any br
 
 In the search area, searching action can get 20 responses as default. Click "search" to search for events, and the results will be displayed below the search area. Click "arrow" beside the search button for more searching attributes, which include event "classification" and "response number". Also, the current time and date are displayed beside the brand name. The Carousel in this page only defaults images for presenting purpose only.
 
-![Myevent homepage](assets/images/homepage.jpg)
+![Myevent homepage](assets/images/homepage.png)
 
 On every response, event image, start time and event name are displayed. Click Event Name can navigate to the event page. Users can also click the "star" symbol on each event to save them into the favorite page. Then users can click "favorite" in the navbar to go to favorite page.
 
-![Myevent favpage](assets/images/favpage.jpg)
+![Myevent favpage](assets/images/favpage.png)
 
 In the favorite page, the Carousel is a display of local events functioning as a suggestion or tempting marketing advertisement. The events displayed in "My favorite event" area are events saved by the user into local storage. On each saved event, an image, event name, start time and days left until the current date is displayed, the user can click the delete button to delete the event from local storage.
 
