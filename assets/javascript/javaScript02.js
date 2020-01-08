@@ -1,6 +1,6 @@
-$(document).ready(function () {
+$(document).ready(function() {
     $('.sidenav').sidenav();
-    
+
     var currentTime = $("#currentTime");
     currentTime.text(moment().format('lll'));
     // TicketMaster
@@ -19,11 +19,12 @@ $(document).ready(function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(geoSucc, showError);
         };
+
         function geoSucc(position) {
-            var deviceLat = position.coords.latitude;
-            var deviceLon = position.coords.longitude;
-            grabResponse(deviceLat,deviceLon);
+            deviceLat = position.coords.latitude;
+            deviceLon = position.coords.longitude;
         };
+
         function showError(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
@@ -40,21 +41,21 @@ $(document).ready(function () {
                     break;
             };
         }
-        
+
     }
-
-    // parse search result from API
-    function grabResponse(latitude,longitude) {
-
+    grabResponse()
+        // parse search result from API
+    function grabResponse() {
+        console.log("inside geores");
         // country set as AU changed by using geolocation
         // var country = "&countryCode=AU";
 
         var responseNumber = "&size=100"; //response size
         // response of the location of current device
-        if (latitude == "" && longitude == "") {
+        if (deviceLat == "" && deviceLon == "") {
             var geoSearch = ""; //response size
         } else {
-            geoSearch = "&latlong=" + latitude + "," + longitude;
+            var geoSearch = "&latlong=" + deviceLat + "," + deviceLon;
         };
         // API from ticketmaster
         console.log(geoSearch);
@@ -66,11 +67,11 @@ $(document).ready(function () {
             type: 'GET',
             url: queryURL,
             dataType: 'JSON',
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
                 displayUpcomingEvents(response);
             },
-            error: function () {
+            error: function() {
                 alert("Error, 404 (not found)!")
             }
         });
@@ -80,68 +81,62 @@ $(document).ready(function () {
     function displayUpcomingEvents(response) {
         console.log(response);
         //loop through search response to display them
-        var eventExist = response._embedded;
-        console.log(eventExist);
-        if (eventExist == null) {
-            alert('Error, no response received!')
-        }
-        else {
-            var eventArray = response._embedded.events.length;
-            console.log(eventArray);
-            for (var i = 0; i < eventArray/5; i++) {
-                // parse from json for the needed data
-                var eventEl = response._embedded.events[i*5];
-                var eventDate = eventEl.dates.start.localDate;
-                var newDate = moment(eventDate).format("MMMM Do YYYY");
-                var eventTime = eventEl.dates.start.localTime;
-                var newTime = moment(eventTime, "HH:mm:ss").format("h:mm a");
-                var eventImg = eventEl.images[1].url;
-                var eventHeader = eventEl.name;
-                var eventLink = eventEl.url;
-                var eventId = eventEl.id;
-                // display in display area using card 
-                var carouselDisplayEl = $('.carousel');
-                var carouselContainerEl = $('<a>').addClass('carousel-item');
-                // var cardDivEl = $('<div>').addClass('card saveEventDiv');
-                // var imageDivEl = $('<div>').addClass('card-image');
-                var imageEl = $('<img>');
-                var eventLinkEl = $('<a>').addClass('links card-title col s12 m12 l12');
-                // var cardContentEl = $('<div>').addClass('card-content');
-                var eventTimeEl = $('<p>').addClass('time col s12 m12 l12');
-                var eventDateEl = $('<p>').addClass('date col s12 m12 l12');
-                // var saveEventBtnEl = $('<a>').addClass('waves-effect waves-light btn-floating saveEvent halfway-fab');
-                // var saveSymbolEl = $('<i>').addClass('fa fa-star');
+        var eventArray = response._embedded.events.length;
+        console.log(eventArray);
+        for (var i = 0; i < eventArray / 5; i++) {
+            // parse from json for the needed data
+            var eventEl = response._embedded.events[i * 5];
+            var eventDate = eventEl.dates.start.localDate;
+            var newDate = moment(eventDate).format("MMMM Do YYYY");
+            var eventTime = eventEl.dates.start.localTime;
+            var newTime = moment(eventTime, "HH:mm:ss").format("h:mm a");
+            var eventImg = eventEl.images[1].url;
+            var eventHeader = eventEl.name;
+            var eventLink = eventEl.url;
+            var eventId = eventEl.id;
+            // display in display area using card 
+            var carouselDisplayEl = $('.carousel');
+            var carouselContainerEl = $('<a>').addClass('carousel-item');
+            // var cardDivEl = $('<div>').addClass('card saveEventDiv');
+            // var imageDivEl = $('<div>').addClass('card-image');
+            var imageEl = $('<img>');
+            var eventLinkEl = $('<a>').addClass('links card-title col s12 m12 l12');
+            // var cardContentEl = $('<div>').addClass('card-content');
+            var eventTimeEl = $('<p>').addClass('time col s12 m12 l12');
+            var eventDateEl = $('<p>').addClass('date col s12 m12 l12');
+            // var saveEventBtnEl = $('<a>').addClass('waves-effect waves-light btn-floating saveEvent halfway-fab');
+            // var saveSymbolEl = $('<i>').addClass('fa fa-star');
 
-                carouselContainerEl.attr('href', '#'+ i +'!' );
-                imageEl.attr('src', eventImg);
-                imageEl.attr('alt', eventHeader);
-                imageEl.css('width', '100%');
-                eventLinkEl.attr('href', eventLink);
-                eventLinkEl.attr('id', eventHeader);
-                eventLinkEl.html('<h6>' + eventHeader + '</h6>');
-                eventTimeEl.html('<p>' + newTime + '</p>');
-                eventDateEl.html('<p>' + newDate + '</p>');
-                eventLinkEl.css({'position': 'absolute', 'top': '0', 'left': '10px', 'color': '#ffffff'});
-                eventTimeEl.css({'position': 'absolute', 'top': '60px', 'left': '10px'});
-                eventDateEl.css({'position': 'absolute', 'top': '80px', 'left': '10px'});
-                // saveEventBtnEl.attr('id', eventId);
+            carouselContainerEl.attr('href', '#' + i + '!');
+            imageEl.attr('src', eventImg);
+            imageEl.attr('alt', eventHeader);
+            imageEl.css('width', '100%');
+            eventLinkEl.attr('href', eventLink);
+            eventLinkEl.attr('id', eventHeader);
+            eventLinkEl.html('<h6>' + eventHeader + '</h6>');
+            eventTimeEl.html('<p>' + newTime + '</p>');
+            eventDateEl.html('<p>' + newDate + '</p>');
+            eventLinkEl.css({ 'position': 'absolute', 'top': '0', 'left': '10px', 'color': '#ffffff' });
+            eventTimeEl.css({ 'position': 'absolute', 'top': '60px', 'left': '10px' });
+            eventDateEl.css({ 'position': 'absolute', 'top': '80px', 'left': '10px' });
+            // saveEventBtnEl.attr('id', eventId);
 
-                carouselDisplayEl.append(carouselContainerEl);
-                carouselContainerEl.append(imageEl);
-                // imageDivEl.append(imageEl);
-                carouselContainerEl.append(eventLinkEl);
-                carouselContainerEl.append(eventTimeEl);
-                carouselContainerEl.append(eventDateEl);
+            carouselDisplayEl.append(carouselContainerEl);
+            carouselContainerEl.append(imageEl);
+            // imageDivEl.append(imageEl);
+            carouselContainerEl.append(eventLinkEl);
+            carouselContainerEl.append(eventTimeEl);
+            carouselContainerEl.append(eventDateEl);
 
-                $('.carousel').carousel({
-                    indicators: false
-                });
-            
-                setInterval(function(){
-                    $('.carousel').carousel('next');
-                }, 2000);
-            };
-        }
+            $('.carousel').carousel({
+                indicators: false
+            });
+
+            setInterval(function() {
+                $('.carousel').carousel('next');
+            }, 2000);
+        };
+
     }
 
     //event checking function 
