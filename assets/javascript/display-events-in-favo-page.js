@@ -21,8 +21,8 @@ $(document).ready(function() {
                 var daysLeft = Math.abs(moment().diff(eventDate, "days"));
 
                 var savedEventDivEl = $('#savedEventDiv');
-                var savedEventEl = $('<div>').addClass('row savedEvents');
-                var eventTitleEl = $('<div>').addClass('card-header col s12 m12 l12 hoverable ');
+                var savedEventEl = $('<div>').addClass('row savedEvents hoverable');
+                var eventTitleEl = $('<div>').addClass('card-header col s12 m12 l12');
                 var secondRowDivEl = $('<div>').addClass('row secondRow');
                 var newImageDivEl = $('<div>').addClass('card-image col s12 m5 l5');
                 var newImageEl = $('<img>');

@@ -151,8 +151,9 @@ $(document).ready(function() {
                 var cardContentEl = $('<div>').addClass('card-content');
                 var eventTimeEl = $('<p>').addClass('time');
                 var eventDateEl = $('<p>').addClass('date');
-                var saveEventBtnEl = $('<a>').addClass('waves-effect waves-orange btn-floating saveEvent halfway-fab');
+                var saveEventBtnEl = $('<a>').addClass('waves-effect waves-orange btn-floating halfway-fab saveEvent');
                 var saveSymbolEl = $('<i>').addClass('fa fa-star');
+                var cardFabEl = $("<div class=\"card-fab\"></div>");
 
                 imageEl.attr('src', eventImg);
                 imageEl.attr('alt', eventHeader);
@@ -180,13 +181,16 @@ $(document).ready(function() {
                 cardContainerEl.append(cardDivEl);
                 cardDivEl.append(imageDivEl);
                 imageDivEl.append(imageEl);
-                imageDivEl.append(saveEventBtnEl);
-                saveEventBtnEl.append(saveSymbolEl);
-                cardDivEl.append(cardContentEl);
 
+                saveEventBtnEl.append(saveSymbolEl);
+                cardFabEl.append(saveEventBtnEl);
+                cardDivEl.append(cardFabEl);
+
+                cardDivEl.append(cardContentEl);
                 cardContentEl.append(cardLinkEl);
                 cardContentEl.append(eventTimeEl);
                 cardContentEl.append(eventDateEl);
+
 
 
                 var savedNameString = localStorage.getItem("events");
