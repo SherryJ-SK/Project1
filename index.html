@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>myEvents</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Varela&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet"> -->
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <div class="row brandname">
+            <div class="col s12 m4 l3 valign center">
+                <a class="navbar-brand" href="index.html">My Events</a>
+            </div>
+            <div class="col s12 m6 l4 center">
+                <p id="currentTime"></p>
+            </div>
+        </div>
+        <nav>
+            <div class='nav-wrapper z-depth-3'>
+                <!-- <h2 class="brand-logo right">My Events</h2> -->
+
+                <a href='#' class='sidenav-trigger' data-target='mobile-nav'>
+                    <i class='material-icons'>menu</i>
+                </a>
+
+                <ul class="left hide-on-med-and-down" id='nav-mobile'>
+                    <li class='home nav-item active'>
+                        <a href='index.html'><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a href='myFavourite.html'>My Favourites</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class='sidenav' id='mobile-nav'>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='myFavourite.html'>My Favourites</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section id="mainContent">
+            <div class='container'>
+                <div class='row'>
+                    <div class='carousel carousel-slider col s12 m12 l12'>
+                        <a href='#one!' class='carousel-item'><img src='assets/image/sample01.jpg' alt=''></a>
+                        <a href='#two!' class='carousel-item'><img src='assets/image/sample02.jpeg' alt=''></a>
+                        <a href='#three!' class='carousel-item'><img src='assets/image/sample03.jpeg' alt=''></a>
+                        <a href='#four!' class='carousel-item'><img src='assets/image/sample04.jpg' alt=''></a>
+                        <a href='#five!' class='carousel-item'><img src='assets/image/sample05.jpg' alt=''></a>
+                        <a href='#six!' class='carousel-item'><img src='assets/image/sample06.jpg' alt=''></a>
+
+                    </div>
+
+                </div>
+
+                <form class="col s12 m12 l12" id='searchBox'>
+                    <div class="row">
+                        <p class="keyIn col s12 m10 l8">Looking for amazing events keyword in the box!</p>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 m5 l5">
+                            <input placeholder="Events near me" id="searchInput" type="search" class="validate" onfocus="this.value=''">
+                            <!-- <label for="first_name">Search</label> -->
+                        </div>
+                        <div class="col s3 m1 l1" id='searchBtn'>
+                            <a class="waves-effect waves-light btn"><i class="fa fa-search"></i></a>
+                        </div>
+                        <div class="col s3 m l1" id='arrowDown'>
+                            <a class="waves-effect waves-light btn"><i class="fa fa-chevron-down"></i></a>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+
+                    </div> -->
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <div class="card grey lighten-2" id='advanceSearch' hidden>
+                                <div class="card-content grey-text text-darken-3">
+                                    <h5 class='cardHeader'>Advance Search</h5>
+                                    <h6 class="grey-text text-darken-3">Category</h6>
+                                    <input placeholder="" id="category" type="search" onfocus="this.value=''">
+                                    <h6 class="grey-text text-darken-3" id='eventNo'>Number of Events Displayed</h6>
+                                    <input placeholder="" id="numberSelector" type="number" class="validate" onfocus="this.value=''">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row displayEvents">
+                    <!-- display response here -->
+                </div>
+
+
+        </section>
+        <!-- <div class="push"></div> -->
+    </main>
+
+    <footer class="page-footer">
+        <div class="footer-copyright center valign">
+            <div class="container">
+                Copyright &#169; 2019 My Events
+                <!-- <a class="grey-text text-darken-4 right" href="#!">More Links</a> -->
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Option footer-copyrighta footer-copyrightl JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compressed JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="assets/javascript/moment.min.js"></script>
+    <script src="assets/javascript/javaScript01.js"></script>
+    <script src="assets/javascript/index-page-js.js"></script>
+
+</body>
+
+</html>
