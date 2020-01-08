@@ -86,7 +86,7 @@ There are still small problems need to be adjusted to fit user habit, but time i
 The design is accomplished by following developers from the same Web Dev Bootcamp of USYD.
 
 - Dhani - [Github](https://pozengineer.github.io/)
-- Sherry - [Github]()
+- Sherry - [Github](https://github.com/SherryJ-SK)
 - Ye Yuan - [Github](https://github.com/AndyYuan-Oni)
 
 [Back to the top](#Project-1)
